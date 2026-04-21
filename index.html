@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TWACK CITY 816 | Unified Grid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Unbounded:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-magenta: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-violet: #bc13fe;
+            --neon-blue: #22d3ee;
+        }
+
+        body {
+            background-color: #030303;
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .unbounded {
+            font-family: 'Unbounded', sans-serif;
+        }
+
+        /* Blueprint Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        .grid-accent {
+            position: absolute;
+            opacity: 0.3;
+            animation: fadeOut 1.5s forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 0.4; transform: scale(1); }
+            to { opacity: 0; transform: scale(1.5); }
+        }
+
+        /* Skyline Wrapper - Optimized for Mobile */
+        .skyline-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto -40px auto;
+            height: 180px; /* Shorter for mobile */
+            z-index: 1;
+            perspective: 1200px;
+            overflow: visible;
+        }
+
+        @media (min-width: 768px) {
+            .skyline-wrapper {
+                height: 280px;
+                margin: 0 auto -80px auto;
+            }
+        }
+
+        .skyline-svg {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        /* Building Layers */
+        .b-magenta { fill: #110011; stroke: var(--neon-magenta); filter: drop-shadow(0 0 8px var(--neon-magenta)); }
+        .b-cyan { fill: #001111; stroke: var(--neon-cyan); filter: drop-shadow(0 0 8px var(--neon-cyan)); }
+        .b-violet { fill: #0a001a; stroke: var(--neon-violet); filter: drop-shadow(0 0 8px var(--neon-violet)); }
+        .b-blue { fill: #000a1a; stroke: var(--neon-blue); filter: drop-shadow(0 0 8px var(--neon-blue)); }
+
+        /* Floating Cloud System */
+        .nebula {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @media (min-width: 768px) {
+            .nebula {
+                width: 300px;
+                height: 150px;
+                filter: blur(60px);
+            }
+        }
+
+        .nebula-1 { background: var(--neon-magenta); top: 20%; left: 10%; animation: float-nb 20s infinite alternate; }
+        .nebula-2 { background: var(--neon-cyan); bottom: 10%; right: 10%; animation: float-nb 25s infinite alternate-reverse; }
+
+        @keyframes float-nb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 20px) scale(1.2); }
+        }
+
+        .window {
+            fill: #fff;
+            animation: blink 2s infinite ease-in-out;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 1; }
+        }
+
+        /* Typography Styling */
+        .outlined-text {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+        }
+
+        @media (min-width: 768px) {
+            .outlined-text {
+                -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        .glow-magenta {
+            -webkit-text-stroke: 1.5px var(--neon-magenta);
+            filter: drop-shadow(0 0 10px var(--neon-magenta));
+        }
+
+        .glow-cyan {
+            -webkit-text-stroke: 1.5px var(--neon-cyan);
+            filter: drop-shadow(0 0 10px var(--neon-cyan));
+        }
+
+        /* Interactive Card */
+        .glass-card {
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(188, 19, 254, 0.15);
+            z-index: 20;
+            width: 100%;
+        }
+
+        .radio-container {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .btn-main {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+        }
+
+        .btn-main:hover, .btn-main:active {
+            background: var(--neon-magenta);
+            border-color: var(--neon-magenta);
+            box-shadow: 0 0 30px var(--neon-magenta);
+            color: #000;
+            transform: scale(1.02);
+        }
+
+        .stagger-in {
+            animation: staggerIn 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes staggerIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden selection:bg-cyan-500 selection:text-black">
+
+    <div class="grid-bg"></div>
+    
+    <!-- Top Bar -->
+    <header class="p-6 md:p-10 flex flex-row justify-center items-center z-50">
+        <div class="unbounded text-xl md:text-2xl flex items-center gap-2">
+            <span class="text-white">T</span>
+            <span class="glow-magenta" style="-webkit-text-stroke: 1px var(--neon-magenta);">C</span>
+            <span class="glow-cyan ml-1 text-sm md:text-xl" style="-webkit-text-stroke: 1px var(--neon-cyan);">816</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 sm:px-6 text-center py-8">
+        
+        <!-- Multi-Color 3D Skyline -->
+        <div class="skyline-wrapper stagger-in" id="skyline-parallax">
+            <div class="nebula nebula-1"></div>
+            <div class="nebula nebula-2"></div>
+            
+            <svg viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg" class="skyline-svg">
+                <!-- Distant Violet Layer -->
+                <rect x="50" y="180" width="40" height="100" class="b-violet" style="opacity: 0.5" />
+                <rect x="300" y="140" width="60" height="140" class="b-violet" style="opacity: 0.5" />
+                <rect x="750" y="160" width="40" height="120" class="b-violet" style="opacity: 0.5" />
+
+                <!-- Mid Blue/Cyan Layer -->
+                <rect x="120" y="100" width="50" height="180" class="b-blue" />
+                <rect x="220" y="130" width="45" height="150" class="b-cyan" />
+                <rect x="440" y="80" width="60" height="200" class="b-blue" />
+                <rect x="620" y="110" width="50" height="170" class="b-cyan" />
+                <rect x="850" y="120" width="45" height="160" class="b-blue" />
+
+                <!-- Front Vibrant Magenta/Cyan Layer -->
+                <rect x="180" y="40" width="40" height="240" class="b-magenta" />
+                <rect x="380" y="20" width="50" height="260" class="b-magenta" />
+                <rect x="550" y="60" width="45" height="220" class="b-magenta" />
+                <rect x="700" y="90" width="55" height="190" class="b-cyan" />
+
+                <!-- Windows -->
+                <rect x="195" y="60" width="10" height="4" class="window" style="animation-delay: 0.1s" />
+                <rect x="395" y="50" width="15" height="5" class="window" style="animation-delay: 1.2s; fill: var(--neon-cyan)" />
+                <circle cx="380" cy="20" r="5" fill="red" style="animation: blink 1s infinite" />
+            </svg>
+        </div>
+        
+        <!-- Headline: Responsive Scaling -->
+        <h1 class="unbounded text-5xl sm:text-7xl md:text-[9rem] lg:text-[11rem] leading-[0.8] mb-8 md:mb-12 stagger-in relative z-10" style="animation-delay: 0.2s;">
+            <span class="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">TWACK</span><br>
+            <span class="outlined-text glow-magenta">CITY</span>
+            <div class="text-2xl md:text-6xl mt-2 md:mt-4 tracking-[0.3em] md:tracking-[0.4em] opacity-100 glow-cyan" style="-webkit-text-stroke: 1.5px var(--neon-cyan);">816</div>
+        </h1>
+
+        <!-- Call to Action Card -->
+        <div class="glass-card p-5 md:p-10 rounded-xl max-w-xl stagger-in" style="animation-delay: 0.4s;">
+            <div class="flex flex-col gap-5 md:gap-6">
+                <a href="https://lets-get-lit.com" target="_blank" class="btn-main py-4 md:py-5 text-xs md:text-base flex items-center justify-center">
+                    ENTER GATES
+                </a>
+
+                <div class="radio-container">
+                    <!-- Responsive iframe height -->
+                    <iframe 
+                        src="https://a8.asurahosting.com/public/t_c_816/embed?theme=dark&primary_color=ff00f7&bg_color=000000&text_color=00fbff&volume=100&layout=vertical&rounded=1&allow_popup=1" 
+                        frameborder="0" 
+                        allowtransparency="true" 
+                        style="width: 100%; height: 180px; border: 0; display: block;"
+                        class="md:h-[200px]">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer: Cleaned for Mobile -->
+    <footer class="p-6 md:p-12 flex flex-col md:flex-row justify-between items-center md:items-end gap-8 md:gap-10">
+        <div class="stagger-in text-center md:text-left" style="animation-delay: 0.6s;">
+            <div class="unbounded text-3xl sm:text-5xl md:text-7xl lg:text-8xl opacity-10 outlined-text glow-cyan leading-none mb-3 uppercase">#TWACK4LYFE</div>
+            <p class="text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase text-gray-500">#CUMGETSUM</p>
+        </div>
+        
+        <div class="text-center md:text-right stagger-in" style="animation-delay: 0.7s;">
+            <div class="text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] uppercase mb-4 text-magenta-500 font-black">TWACK CITY</div>
+            <div class="flex gap-4 md:gap-6 justify-center md:justify-end">
+                <div class="w-2 h-2 md:w-3 md:h-3 bg-magenta-500 shadow-[0_0_10px_var(--neon-magenta)] rounded-full"></div>
+                <div class="w-2 h-2 md:w-3 md:h-3 bg-cyan-500 shadow-[0_0_10px_var(--neon-cyan)] rounded-full"></div>
+                <div class="w-2 h-2 md:w-3 md:h-3 bg-white/10 rounded-full"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax and tilt logic - Disabled on small touch devices for better performance/UX
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        if (!isTouchDevice) {
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5);
+                const y = (e.clientY / window.innerHeight - 0.5);
+                
+                // Grid movement
+                document.querySelector('.grid-bg').style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+                
+                // Skyline 3D tilt
+                const skyline = document.getElementById('skyline-parallax');
+                if (skyline) {
+                    skyline.style.transform = `rotateY(${x * 10}deg) rotateX(${y * -8}deg) translateZ(20px)`;
+                }
+                
+                // Glass card depth
+                const card = document.querySelector('.glass-card');
+                if (card) {
+                    const rx = y * -8;
+                    const ry = x * 8;
+                    card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`;
+                }
+            });
+        }
+
+        // Optimized Grid highlight generation
+        const createHighlight = () => {
+            const grid = document.querySelector('.grid-bg');
+            if (!grid) return;
+            
+            const highlight = document.createElement('div');
+            const size = window.innerWidth > 768 ? 60 : 40;
+            const colors = ['var(--neon-magenta)', 'var(--neon-cyan)', 'var(--neon-violet)'];
+            
+            highlight.className = 'grid-accent';
+            highlight.style.width = `${size}px`;
+            highlight.style.height = `${size}px`;
+            highlight.style.left = Math.floor(Math.random() * (window.innerWidth / size)) * size + 'px';
+            highlight.style.top = Math.floor(Math.random() * (window.innerHeight / size)) * size + 'px';
+            
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            highlight.style.background = color;
+            highlight.style.boxShadow = `0 0 15px ${color}`;
+            
+            grid.appendChild(highlight);
+            setTimeout(() => highlight.remove(), 1500);
+        };
+
+        // Run highlight loop
+        setInterval(createHighlight, 800);
+    </script>
+</body>
+</html>
