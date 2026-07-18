@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <title>TWACK CITY 816</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Unbounded:wght@900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -23,6 +25,7 @@
             overflow-x: hidden;
             width: 100%;
             -webkit-tap-highlight-color: transparent;
+            transition: background-color 0.5s ease;
         }
 
         .unbounded {
@@ -45,6 +48,7 @@
                 linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: -1;
+            transition: transform 0.2s cubic-bezier(0.1, 0.8, 0.3, 1);
         }
 
         /* Neon Flow Animations */
@@ -92,6 +96,7 @@
             z-index: 1;
             perspective: 1200px;
             overflow: visible;
+            transition: transform 0.2s cubic-bezier(0.1, 0.8, 0.3, 1);
         }
 
         @media (min-width: 768px) {
@@ -111,6 +116,7 @@
         .b-magenta, .b-cyan, .b-violet, .b-blue {
             stroke-dasharray: 500;
             animation: neon-flow 8s linear infinite;
+            transition: all 0.5s ease;
         }
 
         .b-magenta { fill: #110011; stroke: var(--neon-magenta); color: var(--neon-magenta); }
@@ -121,6 +127,7 @@
         .outlined-text {
             color: transparent;
             -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+            transition: -webkit-text-stroke 0.5s ease;
         }
 
         @media (min-width: 768px) {
@@ -132,11 +139,13 @@
         .glow-magenta {
             -webkit-text-stroke: 1.5px var(--neon-magenta);
             filter: drop-shadow(0 0 10px var(--neon-magenta));
+            transition: all 0.5s ease;
         }
 
         .glow-cyan {
             -webkit-text-stroke: 1.5px var(--neon-cyan);
             filter: drop-shadow(0 0 10px var(--neon-cyan));
+            transition: all 0.5s ease;
         }
 
         .moving-neon-tag {
@@ -146,18 +155,20 @@
         /* Interactive Cyber Glass Deck */
         .glass-card {
             background: rgba(0, 0, 0, 0.85);
-            border: 1px solid rgba(255, 0, 255, 0.3);
+            border: 1px solid var(--neon-magenta);
             backdrop-filter: blur(20px);
             box-shadow: 0 0 30px rgba(188, 19, 254, 0.15);
             z-index: 20;
             width: 100%;
+            transition: border 0.5s ease, box-shadow 0.5s ease, transform 0.2s cubic-bezier(0.1, 0.8, 0.3, 1);
         }
 
         .radio-container {
-            border: 1px solid rgba(0, 255, 255, 0.3);
+            border: 1px solid var(--neon-cyan);
             background: #000;
             border-radius: 12px;
             overflow: hidden;
+            transition: border 0.5s ease;
         }
 
         .btn-main {
@@ -217,7 +228,7 @@
             cursor: pointer;
             box-shadow: 0 0 10px var(--neon-cyan);
             margin-top: -5px;
-            transition: transform 0.1s ease, background-color 0.1s ease;
+            transition: transform 0.1s ease, background-color 0.1s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
         input[type="range"]::-webkit-slider-thumb:hover {
@@ -239,7 +250,7 @@
             border: 2px solid var(--neon-cyan);
             cursor: pointer;
             box-shadow: 0 0 10px var(--neon-cyan);
-            transition: transform 0.1s ease, background-color 0.1s ease;
+            transition: transform 0.1s ease, background-color 0.1s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
         /* Rotating ring animation for loading state */
@@ -253,11 +264,10 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col overflow-x-hidden selection:bg-cyan-500 selection:text-black">
-
+    
     <div class="grid-bg"></div>
     
-    <header class="p-4 md:p-6 flex flex-row justify-center items-center z-50">
-    </header>
+    <header class="p-4 md:p-6 flex flex-row justify-center items-center z-50"> </header>
 
     <main class="flex-grow flex flex-col items-center justify-center px-4 sm:px-6 text-center py-8">
         
@@ -283,25 +293,33 @@
                 <rect x="700" y="90" width="55" height="190" class="b-cyan" />
             </svg>
         </div>
-        
+
         <h1 class="unbounded text-5xl sm:text-7xl md:text-[9rem] lg:text-[11rem] leading-[0.8] mb-8 md:mb-12 stagger-in relative z-10" style="animation-delay: 0.2s;">
             <span class="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">TWACK</span><br>
             <span class="outlined-text glow-magenta">CITY</span>
-            <div class="text-2xl md:text-6xl mt-2 md:mt-4 tracking-[0.3em] md:tracking-[0.4em] opacity-100 glow-cyan" style="-webkit-text-stroke: 1.5px var(--neon-cyan);">816</div>
+            <div class="text-2xl md:text-6xl mt-2 md:mt-4 tracking-[0.3em] md:tracking-[0.4em] opacity-100 glow-cyan">816</div>
         </h1>
 
         <!-- Upgraded and widened Glass deck container for larger player -->
-        <div class="glass-card p-5 md:p-10 rounded-xl max-w-2xl stagger-in w-full" style="animation-delay: 0.4s;">
+        <div class="glass-card p-5 md:p-10 rounded-xl max-w-2xl stagger-in w-full animate-card-glow" style="animation-delay: 0.4s;">
             <div class="flex flex-col gap-5 md:gap-6">
-                <a href="https://lets-get-lit.com" target="_blank" class="btn-main py-4 md:py-5 text-xs md:text-base flex items-center justify-center rounded-lg">
-                    CITY GATES ENTER HERE
-                </a>
+                
+                <!-- Double Portal Gateway Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="https://lets-get-lit.com" target="_blank" class="btn-main py-4 flex items-center justify-center rounded-lg text-xs md:text-sm">
+                        🚀 CITY GATES ENTER HERE
+                    </a>
+                    <a href="https://meshcast.io/view.html?geo=usw2&id=TCVIDS" target="_blank" class="btn-main py-4 flex items-center justify-center rounded-lg text-xs md:text-sm">
+                        📺 TC VIDEO PORTAL
+                    </a>
+                </div>
 
                 <!-- Custom Radio Hub console with Scrolling Now Playing Feed -->
                 <div class="radio-container flex flex-col">
+                    
                     <!-- Real-time Scrolling Ticker Head -->
                     <div class="w-full bg-black/90 border-b border-cyan-500/20 overflow-hidden py-3 select-none flex items-center">
-                        <div class="animate-marquee font-mono text-base md:text-2xl uppercase tracking-[0.25em] text-[#00ffff] drop-shadow-[0_0_8px_var(--neon-cyan)] font-bold">
+                        <div class="animate-marquee font-mono text-base md:text-2xl uppercase tracking-[0.25em] text-[var(--neon-cyan)] drop-shadow-[0_0_8px_var(--neon-cyan)] font-bold">
                             <span id="now-playing-ticker">CONNECTING TO TRANS-NETWORK FEED... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         </div>
                     </div>
@@ -314,32 +332,32 @@
                         <div class="absolute top-2 right-2 text-[8px] font-mono text-magenta-500/30" id="audio-bitrate">MP3_320KBPS</div>
 
                         <!-- Custom Audio Element (Smart network interface) -->
-                        <audio id="twack-audio" preload="none"></audio>
+                        <audio id="twack-audio" preload="none" crossorigin="anonymous"></audio>
 
                         <!-- Dynamic Equalizer Bar Visualizer -->
                         <div class="flex items-end justify-center gap-1.5 h-16 w-full mb-6" id="visualizer-bars">
-                            <div class="w-1.5 bg-[#00ffff] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-cyan)]" style="height: 10%"></div>
-                            <div class="w-1.5 bg-[#00ffff] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-cyan)]" style="height: 10%"></div>
-                            <div class="w-1.5 bg-[#ff00ff] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-magenta)]" style="height: 10%"></div>
-                            <div class="w-1.5 bg-[#ff00ff] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-magenta)]" style="height: 10%"></div>
-                            <div class="w-1.5 bg-[#00ffff] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-cyan)]" style="height: 10%"></div>
-                            <div class="w-1.5 bg-[#00ffff] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-cyan)]" style="height: 10%"></div>
-                            <div class="w-1.5 bg-[#ff00ff] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-magenta)]" style="height: 10%"></div>
-                            <div class="w-1.5 bg-[#ff00ff] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-magenta)]" style="height: 10%"></div>
+                            <div class="w-1.5 bg-[var(--neon-cyan)] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-cyan)]" style="height: 10%"></div>
+                            <div class="w-1.5 bg-[var(--neon-cyan)] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-cyan)]" style="height: 10%"></div>
+                            <div class="w-1.5 bg-[var(--neon-magenta)] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-magenta)]" style="height: 10%"></div>
+                            <div class="w-1.5 bg-[var(--neon-magenta)] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-magenta)]" style="height: 10%"></div>
+                            <div class="w-1.5 bg-[var(--neon-cyan)] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-cyan)]" style="height: 10%"></div>
+                            <div class="w-1.5 bg-[var(--neon-cyan)] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-cyan)]" style="height: 10%"></div>
+                            <div class="w-1.5 bg-[var(--neon-magenta)] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-magenta)]" style="height: 10%"></div>
+                            <div class="w-1.5 bg-[var(--neon-magenta)] rounded-t-sm transition-all duration-150 shadow-[0_0_8px_var(--neon-magenta)]" style="height: 10%"></div>
                         </div>
 
                         <!-- Main Creative Play & Volume Controls -->
                         <div class="flex flex-col items-center justify-center z-10 w-full gap-4">
                             <!-- Custom Play Button -->
-                            <button id="custom-play-btn" class="relative group w-20 h-20 rounded-full flex items-center justify-center border-2 border-white/80 bg-black hover:border-[#ff00ff] hover:bg-neutral-900 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)] focus:outline-none cursor-pointer">
+                            <button id="custom-play-btn" class="relative group w-20 h-20 rounded-full flex items-center justify-center border-2 border-white/80 bg-black hover:border-[var(--neon-magenta)] hover:bg-neutral-900 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)] focus:outline-none cursor-pointer">
                                 <!-- Inner Neon Ring (Spins when loading/buffering) -->
-                                <div id="orbital-ring" class="absolute inset-1 rounded-full border border-dashed border-[#00ffff]/30 group-hover:border-[#ff00ff]/60 animate-orbital"></div>
+                                <div id="orbital-ring" class="absolute inset-1 rounded-full border border-dashed border-[var(--neon-cyan)]/30 group-hover:border-[var(--neon-magenta)]/60 animate-orbital"></div>
                                 <!-- Play Icon -->
-                                <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white group-hover:text-[#ff00ff] transition-colors ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white group-hover:text-[var(--neon-magenta)] transition-colors ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                 </svg>
                                 <!-- Pause Icon -->
-                                <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white group-hover:text-[#ff00ff] transition-colors hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white group-hover:text-[var(--neon-magenta)] transition-colors hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 9v6m4-6v6" />
                                 </svg>
                             </button>
@@ -347,11 +365,11 @@
                             <!-- Custom Neon Volume Bar -->
                             <div class="flex items-center gap-3 w-48 sm:w-64 px-4 py-1.5 bg-black/60 rounded-full border border-white/10 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
                                 <!-- Speaker Mute/Unmute Icon Button -->
-                                <button id="volume-mute-btn" class="text-white hover:text-[#00ffff] transition-colors duration-200 focus:outline-none">
+                                <button id="volume-mute-btn" class="text-white hover:text-[var(--neon-cyan)] transition-colors duration-200 focus:outline-none">
                                     <svg id="speaker-on-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M12 18.75V5.25L7.75 9.5H4.5v5h3.25L12 18.75z" />
                                     </svg>
-                                    <svg id="speaker-muted-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden text-[#ff00ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg id="speaker-muted-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden text-[var(--neon-magenta)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
                                     </svg>
@@ -372,13 +390,16 @@
             <div class="unbounded text-3xl sm:text-5xl md:text-7xl lg:text-8xl outlined-text glow-cyan leading-none mb-3 uppercase moving-neon-tag">#TWACK4LYFE</div>
             <p class="text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase text-gray-500">#CUMGETSUM</p>
         </div>
-        
+
         <div class="text-center md:text-right stagger-in" style="animation-delay: 0.7s;">
-            <div class="text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] uppercase mb-4 text-[#ff00ff] font-black">TWACK CITY</div>
+            <div class="text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.4em] uppercase mb-4 text-[var(--neon-magenta)] font-black" id="footer-vibe-label">TWACK CITY</div>
+            
+            <!-- Interactive Vibe Selection Nodes -->
             <div class="flex gap-4 md:gap-6 justify-center md:justify-end">
-                <div class="w-2 h-2 md:w-3 md:h-3 bg-[#ff00ff] shadow-[0_0_10px_var(--neon-magenta)] rounded-full"></div>
-                <div class="w-2 h-2 md:w-3 md:h-3 bg-[#00ffff] shadow-[0_0_10px_var(--neon-cyan)] rounded-full"></div>
-                <div class="w-2 h-2 md:w-3 md:h-3 bg-white/10 rounded-full"></div>
+                <button onclick="setVibeSector('cyberpunk')" class="w-3 h-3 md:w-4 md:h-4 bg-[#ff00ff] shadow-[0_0_10px_#ff00ff] rounded-full focus:outline-none hover:scale-125 transition-transform" title="Cyber Synth"></button>
+                <button onclick="setVibeSector('toxic')" class="w-3 h-3 md:w-4 md:h-4 bg-[#39ff14] shadow-[0_0_10px_#39ff14] rounded-full focus:outline-none hover:scale-125 transition-transform" title="Toxic Hazard"></button>
+                <button onclick="setVibeSector('nuclear')" class="w-3 h-3 md:w-4 md:h-4 bg-[#ff6a00] shadow-[0_0_10px_#ff6a00] rounded-full focus:outline-none hover:scale-125 transition-transform" title="Amber Reactor"></button>
+                <button onclick="setVibeSector('glacier')" class="w-3 h-3 md:w-4 md:h-4 bg-[#00ffff] shadow-[0_0_10px_#00ffff] rounded-full focus:outline-none hover:scale-125 transition-transform" title="Glacier Core"></button>
             </div>
         </div>
     </footer>
@@ -391,15 +412,15 @@
             document.addEventListener('mousemove', (e) => {
                 const x = (e.clientX / window.innerWidth - 0.5);
                 const y = (e.clientY / window.innerHeight - 0.5);
-                
+
                 const grid = document.querySelector('.grid-bg');
                 if (grid) grid.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
-                
+
                 const skyline = document.getElementById('skyline-parallax');
                 if (skyline) {
                     skyline.style.transform = `rotateY(${x * 10}deg) rotateX(${y * -8}deg) translateZ(20px)`;
                 }
-                
+
                 const card = document.querySelector('.glass-card');
                 if (card) {
                     const rx = y * -8;
@@ -407,6 +428,41 @@
                     card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`;
                 }
             });
+        }
+
+        // Vibe Sector Color Map Configuration
+        function setVibeSector(vibeName) {
+            const root = document.documentElement;
+            const vibeLabel = document.getElementById('footer-vibe-label');
+
+            if (vibeName === 'cyberpunk') {
+                root.style.setProperty('--neon-magenta', '#ff00ff');
+                root.style.setProperty('--neon-cyan', '#00ffff');
+                root.style.setProperty('--neon-violet', '#bc13fe');
+                root.style.setProperty('--neon-blue', '#22d3ee');
+                vibeLabel.innerText = "TWACK CITY // SYNTH";
+            } else if (vibeName === 'toxic') {
+                root.style.setProperty('--neon-magenta', '#39ff14');
+                root.style.setProperty('--neon-cyan', '#00f0ff');
+                root.style.setProperty('--neon-violet', '#10b981');
+                root.style.setProperty('--neon-blue', '#0d9488');
+                vibeLabel.innerText = "TWACK CITY // TOXIC";
+            } else if (vibeName === 'nuclear') {
+                root.style.setProperty('--neon-magenta', '#ff6a00');
+                root.style.setProperty('--neon-cyan', '#ffea00');
+                root.style.setProperty('--neon-violet', '#f59e0b');
+                root.style.setProperty('--neon-blue', '#ef4444');
+                vibeLabel.innerText = "TWACK CITY // REACTOR";
+            } else if (vibeName === 'glacier') {
+                root.style.setProperty('--neon-magenta', '#00d2ff');
+                root.style.setProperty('--neon-cyan', '#ffffff');
+                root.style.setProperty('--neon-violet', '#a855f7');
+                root.style.setProperty('--neon-blue', '#3b82f6');
+                vibeLabel.innerText = "TWACK CITY // GLACIER";
+            }
+
+            // Sync visualizer bar shadows on theme update
+            updateVolume(volumeSlider.value);
         }
 
         // Live track metadata collector (API)
@@ -426,7 +482,7 @@
             try {
                 const response = await fetch('https://a8.asurahosting.com/api/nowplaying/t_c_816');
                 if (!response.ok) throw new Error('API failed');
-                
+
                 const data = await response.json();
                 let displayString = "TRANS-SPECTRUM BROADCAST ACTIVE";
 
@@ -440,14 +496,13 @@
                     const song = data.now_playing.song;
                     const artist = song.artist ? song.artist.trim().toUpperCase() : "";
                     const title = song.title ? song.title.trim().toUpperCase() : "";
-                    
+
                     if (artist && title) {
                         displayString = `NOW PLAYING: ${artist} — ${title}`;
                     } else if (song.text) {
                         displayString = `NOW PLAYING: ${song.text.toUpperCase()}`;
                     }
                 }
-                
                 // Inject Live DJ name if stream status is live
                 if (data && data.live && data.live.is_live && data.live.streamer_name) {
                     displayString = `🔴 LIVE DJ: ${data.live.streamer_name.toUpperCase()} // ${displayString}`;
@@ -492,7 +547,6 @@
             audio.volume = val / 100;
             volumeSlider.style.setProperty('--volume-percent', `${val}%`);
             volumeSlider.value = val;
-            
             if (val === 0) {
                 audio.muted = true;
                 speakerOnIcon.classList.add('hidden');
@@ -589,7 +643,7 @@
             } else {
                 audio.pause();
                 // Flush memory buffers entirely to close background socket connections immediately
-                audio.removeAttribute('src'); 
+                audio.removeAttribute('src');
                 audio.load();
                 handlePlaybackStop();
             }
@@ -599,21 +653,21 @@
         const createHighlight = () => {
             const grid = document.querySelector('.grid-bg');
             if (!grid) return;
-            
+
             const highlight = document.createElement('div');
             const size = window.innerWidth > 768 ? 60 : 40;
             const colors = ['var(--neon-magenta)', 'var(--neon-cyan)', 'var(--neon-violet)'];
-            
+
             highlight.className = 'grid-accent';
             highlight.style.width = `${size}px`;
             highlight.style.height = `${size}px`;
             highlight.style.left = Math.floor(Math.random() * (window.innerWidth / size)) * size + 'px';
             highlight.style.top = Math.floor(Math.random() * (window.innerHeight / size)) * size + 'px';
-            
+
             const color = colors[Math.floor(Math.random() * colors.length)];
             highlight.style.background = color;
             highlight.style.boxShadow = `0 0 15px ${color}`;
-            
+
             grid.appendChild(highlight);
             setTimeout(() => highlight.remove(), 1500);
         };
