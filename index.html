@@ -382,15 +382,15 @@
                                 <span>AUDIO_STREAM_RX</span>
                             </div>
                             <button id="viz-mode-btn" onclick="cycleVizMode()" class="text-pink-400 hover:text-cyan-300 font-bold bg-black/80 px-2.5 py-1 rounded-md border border-pink-500/40 hover:border-cyan-400 transition-all cursor-pointer flex items-center gap-1 shadow-[0_0_12px_rgba(255,0,127,0.3)]">
-                                <span id="viz-mode-label">🌅 VIZ: SYNTHWAVE GRID & SUN</span>
-                            </button>
-                        </div>
+                            <span id="viz-mode-label">🌅 VIZ: SYNTHWAVE GRID & SUN</span>
+                        </button>
+                    </div>
 
-                        <!-- Audio Element -->
-                        <audio id="twack-audio" preload="none" crossorigin="anonymous"></audio>
+                    <!-- Audio Element (Removed crossorigin="anonymous" to prevent CORS audio blocks) -->
+                    <audio id="twack-audio" preload="none"></audio>
 
-                        <!-- Central Play Controls -->
-                        <div class="flex flex-col items-center justify-center z-10 w-full gap-3 my-auto">
+                    <!-- Central Play Controls -->
+                    <div class="flex flex-col items-center justify-center z-10 w-full gap-3 my-auto">
                             <button id="custom-play-btn" aria-label="Play or Pause Stream" class="relative group w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-2 border-white/80 bg-black hover:border-[var(--neon-magenta)] hover:bg-neutral-900 active:scale-95 transition-all duration-200 shadow-[0_0_20px_rgba(0,255,255,0.2)] focus:outline-none cursor-pointer">
                                 <div id="orbital-ring" class="absolute inset-1 rounded-full border border-dashed border-[var(--neon-cyan)]/50 group-hover:border-[var(--neon-magenta)]/80 animate-orbital"></div>
                                 <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8 text-white group-hover:text-[var(--neon-magenta)] transition-colors ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -441,6 +441,45 @@
     <div id="toast-container" class="fixed bottom-6 right-6 z-50 pointer-events-none flex flex-col gap-2"></div>
 
     <script>
+        // Web Audio Context Synthesizer & Sound FX Engine
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioCtxClass) {
+                    audioCtx = new AudioCtxClass();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playCyberSound(type = 'beep', freq = 600) {
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = type === 'beep' ? 'sine' : 'sawtooth';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(Math.max(20, freq / 2), ctx.currentTime + 0.08);
+                gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.08);
+            } catch (e) {
+                console.warn('Web Audio playback error:', e);
+            }
+        }
+
+        function appendTerminalLog(msg) {
+            console.log(`[TWACK CITY 816] ${msg}`);
+        }
+
         // Cyber Toast Notification Utility
         function showCyberToast(message, duration = 3000) {
             const container = document.getElementById('toast-container');
@@ -460,123 +499,13 @@
             }, duration);
         }
 
-        // Cyber System Terminal Logger Utility
-        function appendTerminalLog(msg) {
-            const term = document.getElementById('terminal-log');
-            if (term) {
-                const time = new Date().toLocaleTimeString('en-US', { hour12: false });
-                const line = document.createElement('div');
-                line.textContent = `[${time}] ${msg}`;
-                term.appendChild(line);
-                term.scrollTop = term.scrollHeight;
-            } else {
-                console.log(`[TC816-LOG] ${msg}`);
-            }
-        }
-
-        // Web Audio API Synthesizer & Sound Effect Engine
-        let audioCtx = null;
-
-        function getAudioContext() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-            return audioCtx;
-        }
-
-        function playCyberSound(type = 'beep', freq = 600, duration = 0.08) {
-            try {
-                const ctx = getAudioContext();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(freq, ctx.currentTime);
-                gain.gain.setValueAtTime(0.08, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-
-                osc.start();
-                osc.stop(ctx.currentTime + duration);
-            } catch (e) {
-                // Ignore audio context autoplay restrictions
-            }
-        }
-
-        // Trigger synth pad sound effects
-        function triggerPadSound(soundType) {
-            try {
-                const ctx = getAudioContext();
-                const now = ctx.currentTime;
-
-                if (soundType === 'subdrop') {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.type = 'sine';
-                    osc.frequency.setValueAtTime(140, now);
-                    osc.frequency.exponentialRampToValueAtTime(35, now + 0.6);
-                    gain.gain.setValueAtTime(0.3, now);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.65);
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.start(now);
-                    osc.stop(now + 0.65);
-                    appendTerminalLog("🎛️ SUB DROP TRIGGERED (40Hz Ramp)");
-                } else if (soundType === 'laser') {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(1200, now);
-                    osc.frequency.exponentialRampToValueAtTime(150, now + 0.25);
-                    gain.gain.setValueAtTime(0.15, now);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.start(now);
-                    osc.stop(now + 0.25);
-                    appendTerminalLog("⚡ LASER SWEEP TRIGGERED");
-                } else if (soundType === 'stinger') {
-                    [440, 554.37, 659.25].forEach((f) => {
-                        const osc = ctx.createOscillator();
-                        const gain = ctx.createGain();
-                        osc.type = 'triangle';
-                        osc.frequency.setValueAtTime(f, now);
-                        gain.gain.setValueAtTime(0.08, now);
-                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-                        osc.connect(gain);
-                        gain.connect(ctx.destination);
-                        osc.start(now);
-                        osc.stop(now + 0.4);
-                    });
-                    appendTerminalLog("🌌 CYBER CHORD STINGER TRIGGERED");
-                } else if (soundType === 'datapulse') {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.type = 'square';
-                    osc.frequency.setValueAtTime(2400, now);
-                    osc.frequency.setValueAtTime(1800, now + 0.05);
-                    osc.frequency.setValueAtTime(3200, now + 0.1);
-                    gain.gain.setValueAtTime(0.06, now);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.start(now);
-                    osc.stop(now + 0.18);
-                    appendTerminalLog("📡 DATA PULSE BURST TRIGGERED");
-                }
-            } catch (err) {
-                console.warn("Synth pad audio error:", err);
-            }
-        }
-
-        // Live track metadata API handler
-        let fallbackStreamUrl = "https://a8.asurahosting.com/listen/t_c_816/radio.mp3";
-        let activeStreamUrl = fallbackStreamUrl;
+        // Live track metadata API handler & Stream URL Fallback Pool
+        let streamEndpoints = [
+            "https://a8.asurahosting.com/listen/t_c_816/radio.mp3",
+            "https://a8.asurahosting.com/radio/8000/radio.mp3"
+        ];
+        let currentEndpointIndex = 0;
+        let activeStreamUrl = streamEndpoints[0];
 
         function forceHTTPS(url) {
             if (!url) return "";
@@ -592,7 +521,11 @@
                 let displayString = "TRANS-SPECTRUM BROADCAST ACTIVE";
 
                 if (data && data.station && data.station.listen_url) {
-                    activeStreamUrl = forceHTTPS(data.station.listen_url);
+                    const freshListenUrl = forceHTTPS(data.station.listen_url);
+                    if (!streamEndpoints.includes(freshListenUrl)) {
+                        streamEndpoints.unshift(freshListenUrl);
+                    }
+                    activeStreamUrl = freshListenUrl;
                 }
 
                 if (data && data.now_playing && data.now_playing.song) {
@@ -672,11 +605,25 @@
             }
         });
 
+        // Automatic failover logic on stream error
         audio.addEventListener('error', (e) => {
             console.warn("Stream error encountered:", e);
-            handlePlaybackStop();
-            document.getElementById('now-playing-ticker').innerText = "🔴 TRANSMISSION INTERRUPTED — TAP PLAY TO RECONNECT • ";
-            appendTerminalLog("🔴 Stream error detected. Pipeline reset.");
+            appendTerminalLog("🔴 Stream playback error detected. Attempting fallback server connection...");
+            
+            // Cycle to next fallback endpoint
+            currentEndpointIndex = (currentEndpointIndex + 1) % streamEndpoints.length;
+            activeStreamUrl = streamEndpoints[currentEndpointIndex];
+
+            if (isPlaying) {
+                setTimeout(() => {
+                    audio.src = activeStreamUrl;
+                    audio.load();
+                    audio.play().catch(() => handlePlaybackStop());
+                }, 1000);
+            } else {
+                handlePlaybackStop();
+                document.getElementById('now-playing-ticker').innerText = "🔴 TRANSMISSION INTERRUPTED — TAP PLAY TO RECONNECT • ";
+            }
         });
 
         function handlePlaybackStop() {
@@ -688,15 +635,16 @@
         }
 
         playBtn.addEventListener('click', () => {
+            getAudioContext(); // Ensure Web Audio context is resumed on user tap
             playCyberSound('beep', isPlaying ? 400 : 800);
+            
             if (!isPlaying) {
                 orbitalRing.classList.remove('animate-orbital');
                 orbitalRing.classList.add('animate-spin');
 
-                const streamEndpoint = activeStreamUrl || fallbackStreamUrl;
-                const freshUrl = streamEndpoint + (streamEndpoint.includes('?') ? '&' : '?') + 'cb=' + Date.now();
+                const streamEndpoint = activeStreamUrl || streamEndpoints[0];
                 
-                audio.src = freshUrl;
+                audio.src = streamEndpoint;
                 audio.volume = volumeSlider.value / 100;
                 audio.load();
 
@@ -707,12 +655,26 @@
                         playIcon.classList.add('hidden');
                         pauseIcon.classList.remove('hidden');
                         showCyberToast("STREAM CONNECTED // TRANSMISSION ACTIVE");
-                        appendTerminalLog("⚡ Stream connected successfully.");
+                        appendTerminalLog(`⚡ Stream connected: ${streamEndpoint}`);
                     }).catch(err => {
-                        console.error("Playback prevented by browser policy:", err);
-                        handlePlaybackStop();
-                        document.getElementById('now-playing-ticker').innerText = "🔴 TAP AGAIN TO UNMUTE AUDIO FEED • ";
-                        appendTerminalLog("⚠️ Playback blocked by browser policy. Tap required.");
+                        console.error("Playback prevented by browser policy or network:", err);
+                        
+                        // Try secondary endpoint on initial attempt block
+                        currentEndpointIndex = (currentEndpointIndex + 1) % streamEndpoints.length;
+                        activeStreamUrl = streamEndpoints[currentEndpointIndex];
+                        audio.src = activeStreamUrl;
+                        audio.load();
+                        
+                        audio.play().then(() => {
+                            isPlaying = true;
+                            playIcon.classList.add('hidden');
+                            pauseIcon.classList.remove('hidden');
+                            showCyberToast("STREAM CONNECTED (SECONDARY PATH)");
+                        }).catch(() => {
+                            handlePlaybackStop();
+                            document.getElementById('now-playing-ticker').innerText = "🔴 TAP PLAY TO START AUDIO FEED • ";
+                            appendTerminalLog("⚠️ Playback blocked or offline. Tap required.");
+                        });
                     });
                 }
             } else {
@@ -1075,4 +1037,45 @@
         renderVisualizer();
 
         // Matrix Cyber Rain FX
-<!-- ... existing code -->
+        const matrixCanvas = document.getElementById('matrix-canvas');
+        if (matrixCanvas) {
+            const mCtx = matrixCanvas.getContext('2d');
+            let mWidth = matrixCanvas.width = window.innerWidth;
+            let mHeight = matrixCanvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                mWidth = matrixCanvas.width = window.innerWidth;
+                mHeight = matrixCanvas.height = window.innerHeight;
+            });
+
+            const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const fontSize = 14;
+            const columns = Math.floor(mWidth / fontSize);
+            const rainDrops = Array(columns).fill(1);
+
+            function drawMatrix() {
+                mCtx.fillStyle = 'rgba(3, 3, 8, 0.08)';
+                mCtx.fillRect(0, 0, mWidth, mHeight);
+
+                mCtx.fillStyle = '#00ffff';
+                mCtx.font = fontSize + 'px "JetBrains Mono", monospace';
+
+                for (let i = 0; i < rainDrops.length; i++) {
+                    const text = katakana.charAt(Math.floor(Math.random() * katakana.length));
+                    const x = i * fontSize;
+                    const y = rainDrops[i] * fontSize;
+
+                    mCtx.fillStyle = Math.random() > 0.85 ? '#ff007f' : '#00ffff';
+                    mCtx.fillText(text, x, y);
+
+                    if (y > mHeight && Math.random() > 0.975) {
+                        rainDrops[i] = 0;
+                    }
+                    rainDrops[i]++;
+                }
+            }
+            setInterval(drawMatrix, 40);
+        }
+    </script>
+</body>
+</html>
