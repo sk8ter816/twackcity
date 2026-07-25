@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>TWACK CITY 816 //</title>
+    <title>TWACK CITY 816 // OPTIMIZED UNDERGROUND BROADCAST HUB</title>
     
     <!-- Google Fonts Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,11 +63,11 @@
         .orbitron { font-family: 'Orbitron', sans-serif; }
         .chakra { font-family: 'Chakra Petch', sans-serif; }
 
-        /* High-Contrast Title Visual Enhancements */
+        /* Title Backing Aura for Ultra Visibility */
         .title-backdrop-aura {
-            background: rgba(3, 3, 12, 0.82) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(3, 3, 12, 0.88) !important;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             padding: 0.75rem 1rem;
             border-radius: 1.5rem;
             box-shadow: 0 0 60px rgba(0, 0, 0, 0.95);
@@ -80,61 +80,42 @@
             }
         }
 
+        /* Hardware-Accelerated Rainbow Text Glow Animation */
         @keyframes rainbow-text-glow {
-            0% {
-                filter: drop-shadow(0 0 12px #ff0055) drop-shadow(3px 3px 0px #ff0055) drop-shadow(-3px -3px 0px #00ffff);
-            }
-            25% {
-                filter: drop-shadow(0 0 12px #ffeb3b) drop-shadow(3px 3px 0px #ffeb3b) drop-shadow(-3px -3px 0px #a855f7);
-            }
-            50% {
-                filter: drop-shadow(0 0 12px #00ff66) drop-shadow(3px 3px 0px #00ff66) drop-shadow(-3px -3px 0px #ff007f);
-            }
-            75% {
-                filter: drop-shadow(0 0 12px #00ffff) drop-shadow(3px 3px 0px #00ffff) drop-shadow(-3px -3px 0px #ffb703);
-            }
-            100% {
-                filter: drop-shadow(0 0 12px #ff0055) drop-shadow(3px 3px 0px #ff0055) drop-shadow(-3px -3px 0px #00ffff);
-            }
+            0% { filter: drop-shadow(0 0 12px #ff0055) drop-shadow(3px 3px 0px #ff0055) drop-shadow(-3px -3px 0px #00ffff); }
+            25% { filter: drop-shadow(0 0 12px #ffeb3b) drop-shadow(3px 3px 0px #ffeb3b) drop-shadow(-3px -3px 0px #a855f7); }
+            50% { filter: drop-shadow(0 0 12px #00ff66) drop-shadow(3px 3px 0px #00ff66) drop-shadow(-3px -3px 0px #ff007f); }
+            75% { filter: drop-shadow(0 0 12px #00ffff) drop-shadow(3px 3px 0px #00ffff) drop-shadow(-3px -3px 0px #ffb703); }
+            100% { filter: drop-shadow(0 0 12px #ff0055) drop-shadow(3px 3px 0px #ff0055) drop-shadow(-3px -3px 0px #00ffff); }
         }
 
         .cyber-title-twack {
             color: #ffffff;
             -webkit-text-stroke: 2px #000000;
-            text-shadow: 
-                0 0 10px #ffffff,
-                3px 3px 0px #000000,
-                -2px -2px 0px #000000;
+            text-shadow: 0 0 10px #ffffff, 3px 3px 0px #000000, -2px -2px 0px #000000;
             animation: rainbow-text-glow 3.5s linear infinite;
+            will-change: filter;
         }
 
         @media (min-width: 640px) {
             .cyber-title-twack {
                 -webkit-text-stroke: 3px #000000;
-                text-shadow: 
-                    0 0 12px #ffffff,
-                    4px 4px 0px #000000,
-                    -3px -3px 0px #000000;
+                text-shadow: 0 0 12px #ffffff, 4px 4px 0px #000000, -3px -3px 0px #000000;
             }
         }
 
         .cyber-title-city {
             color: #ffffff;
             -webkit-text-stroke: 2px #000000;
-            text-shadow: 
-                0 0 10px #ffffff,
-                3px 3px 0px #000000,
-                -2px -2px 0px #000000;
+            text-shadow: 0 0 10px #ffffff, 3px 3px 0px #000000, -2px -2px 0px #000000;
             animation: rainbow-text-glow 3.5s linear infinite 1.75s;
+            will-change: filter;
         }
 
         @media (min-width: 640px) {
             .cyber-title-city {
                 -webkit-text-stroke: 3px #000000;
-                text-shadow: 
-                    0 0 12px #ffffff,
-                    4px 4px 0px #000000,
-                    -3px -3px 0px #000000;
+                text-shadow: 0 0 12px #ffffff, 4px 4px 0px #000000, -3px -3px 0px #000000;
             }
         }
 
@@ -161,7 +142,7 @@
             pointer-events: none;
         }
 
-        /* Canvas Layer */
+        /* Visualizer Canvas Layer */
         #bg-visualizer {
             position: fixed;
             top: 0;
@@ -173,20 +154,22 @@
             opacity: 0.95;
             display: block;
             filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.4));
+            will-change: transform;
         }
 
         @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
+            0% { transform: translate3d(0%, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
         }
 
         .animate-marquee {
             display: inline-block;
             white-space: nowrap;
             animation: marquee 20s linear infinite;
+            will-change: transform;
         }
 
-        /* Responsive Skyline Wrapper & Animated Outlines */
+        /* Skyline Wrapper & Floating Motion */
         .skyline-wrapper {
             position: relative;
             width: 100%;
@@ -197,11 +180,12 @@
             overflow: hidden;
             aspect-ratio: 1000 / 280;
             animation: float-skyline 6s ease-in-out infinite alternate;
+            will-change: transform;
         }
 
         @keyframes float-skyline {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-4px); }
+            0% { transform: translate3d(0, 0px, 0); }
+            100% { transform: translate3d(0, -5px, 0); }
         }
 
         .skyline-svg {
@@ -211,57 +195,24 @@
             transform-style: preserve-3d;
         }
 
-        /* Continuous Solid Glowing Outline Color Flow for City Skyline */
+        /* Skyline Color Cycling Animations */
         @keyframes skyline-color-flow {
-            0% {
-                stroke: var(--neon-cyan);
-                filter: drop-shadow(0 0 12px var(--neon-cyan));
-            }
-            25% {
-                stroke: var(--neon-magenta);
-                filter: drop-shadow(0 0 12px var(--neon-magenta));
-            }
-            50% {
-                stroke: var(--neon-amber);
-                filter: drop-shadow(0 0 12px var(--neon-amber));
-            }
-            75% {
-                stroke: var(--neon-green);
-                filter: drop-shadow(0 0 12px var(--neon-green));
-            }
-            100% {
-                stroke: var(--neon-cyan);
-                filter: drop-shadow(0 0 12px var(--neon-cyan));
-            }
+            0% { stroke: var(--neon-cyan); filter: drop-shadow(0 0 10px var(--neon-cyan)); }
+            25% { stroke: var(--neon-magenta); filter: drop-shadow(0 0 10px var(--neon-magenta)); }
+            50% { stroke: var(--neon-amber); filter: drop-shadow(0 0 10px var(--neon-amber)); }
+            75% { stroke: var(--neon-green); filter: drop-shadow(0 0 10px var(--neon-green)); }
+            100% { stroke: var(--neon-cyan); filter: drop-shadow(0 0 10px var(--neon-cyan)); }
         }
 
         .b-violet, .b-blue, .b-cyan, .b-magenta {
             animation: skyline-color-flow 8s linear infinite;
+            will-change: stroke, filter;
         }
 
-        .b-violet {
-            fill: #0c0218;
-            stroke-width: 2.5;
-            animation-delay: 0s;
-        }
-
-        .b-blue {
-            fill: #02121e;
-            stroke-width: 2.5;
-            animation-delay: -2s;
-        }
-
-        .b-cyan {
-            fill: #011b22;
-            stroke-width: 3;
-            animation-delay: -4s;
-        }
-
-        .b-magenta {
-            fill: #1d001d;
-            stroke-width: 3;
-            animation-delay: -6s;
-        }
+        .b-violet { fill: #0c0218; stroke-width: 2.5; animation-delay: 0s; }
+        .b-blue { fill: #02121e; stroke-width: 2.5; animation-delay: -2s; }
+        .b-cyan { fill: #011b22; stroke-width: 3; animation-delay: -4s; }
+        .b-magenta { fill: #1d001d; stroke-width: 3; animation-delay: -6s; }
 
         .skyline-horizon {
             animation: skyline-color-flow 8s linear infinite -1s;
@@ -286,7 +237,6 @@
             100% { --rainbow-angle: 360deg; }
         }
 
-        /* Flowing Bright Neon Rainbow Outer Rim Borders */
         .rainbow-border-box {
             position: relative;
             background: rgba(8, 8, 16, 0.35) !important;
@@ -305,9 +255,7 @@
                 from var(--rainbow-angle),
                 #ff0055, #ff7700, #ffeb3b, #00ff66, #00ffff, #7000ff, #ff007f, #ff0055
             );
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
                     mask-composite: exclude;
             animation: rotate-rainbow 3.5s linear infinite;
@@ -325,9 +273,7 @@
                 from var(--rainbow-angle),
                 #ff0055, #ff7700, #ffeb3b, #00ff66, #00ffff, #7000ff, #ff007f, #ff0055
             );
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
                     mask-composite: exclude;
             animation: rotate-rainbow 3.5s linear infinite;
@@ -355,9 +301,7 @@
                 from var(--rainbow-angle),
                 #ff0055, #ff9900, #ffff00, #00ff66, #00ffff, #9900ff, #ff007f, #ff0055
             );
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
                     mask-composite: exclude;
             animation: rotate-rainbow 3s linear infinite;
@@ -375,9 +319,7 @@
                 from var(--rainbow-angle),
                 #ff0055, #ff9900, #ffff00, #00ff66, #00ffff, #9900ff, #ff007f, #ff0055
             );
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
                     mask-composite: exclude;
             animation: rotate-rainbow 3s linear infinite;
@@ -387,14 +329,8 @@
             pointer-events: none;
         }
 
-        .glow-magenta {
-            text-shadow: 0 0 20px var(--neon-magenta), 0 0 40px var(--neon-magenta);
-        }
-
-        .glow-cyan {
-            color: var(--neon-cyan);
-            text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-cyan);
-        }
+        .glow-magenta { text-shadow: 0 0 20px var(--neon-magenta), 0 0 40px var(--neon-magenta); }
+        .glow-cyan { color: var(--neon-cyan); text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-cyan); }
 
         .btn-cyber {
             position: relative;
@@ -424,7 +360,6 @@
 
         .animate-orbital { animation: orbital 12s linear infinite; }
 
-        /* Range Slider Styling */
         input[type=range] {
             -webkit-appearance: none;
             background: transparent;
@@ -457,6 +392,12 @@
             background: var(--neon-cyan);
         }
 
+        /* Spectrum Bar Graph Styling */
+        .spec-bar {
+            transition: height 0.05s ease-out;
+            will-change: height;
+        }
+
         .stagger-in {
             opacity: 0;
             transform: translateY(20px);
@@ -474,32 +415,31 @@
     <div class="grid-bg" id="grid-bg"></div>
     <canvas id="bg-visualizer"></canvas>
 
-    <!-- Main Responsive Layout Wrapper -->
     <main class="flex-1 w-full max-w-5xl flex flex-col items-center justify-center px-3 sm:px-6 text-center py-4 md:py-6 my-auto relative z-10 box-border">
         
-        <!-- 3D Cyber Skyline Vector with Animated Outlines -->
+        <!-- 3D Cyber Skyline Vector with Solid Animated Outlines -->
         <div class="skyline-wrapper stagger-in mb-3 sm:mb-4" id="skyline-parallax">
             <svg viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg" class="skyline-svg" preserveAspectRatio="xMidYBottom meet">
-                <!-- Distant Background Towers -->
+                <!-- Distant Towers -->
                 <rect x="40" y="170" width="45" height="110" class="b-violet" />
                 <rect x="290" y="130" width="65" height="150" class="b-violet" />
                 <rect x="740" y="150" width="45" height="130" class="b-violet" />
                 <line x1="322" y1="130" x2="322" y2="70" stroke="var(--neon-violet)" stroke-width="2" class="b-violet" />
                 <circle cx="322" cy="68" r="4" fill="var(--neon-violet)" class="animate-ping" />
 
-                <!-- Mid-Tier Skyscrapers -->
+                <!-- Mid Skyscrapers -->
                 <rect x="110" y="90" width="55" height="190" class="b-blue" />
                 <rect x="210" y="120" width="50" height="160" class="b-cyan" />
                 <rect x="430" y="70" width="65" height="210" class="b-blue" />
                 <rect x="610" y="100" width="55" height="180" class="b-cyan" />
                 <rect x="840" y="110" width="50" height="170" class="b-blue" />
 
-                <!-- Stylized Union Station Silhouette Landmark -->
+                <!-- Union Station Landmark Silhouette -->
                 <polygon points="460,280 480,210 520,210 540,280" class="b-cyan" fill="#040f1a" />
                 <line x1="500" y1="210" x2="500" y2="120" stroke="var(--neon-magenta)" stroke-width="3" class="b-magenta" />
                 <circle cx="500" cy="118" r="5" fill="var(--neon-magenta)" />
 
-                <!-- Foreground High-Rises with Animated Moving Outlines -->
+                <!-- Foreground High-Rises -->
                 <rect x="175" y="35" width="45" height="245" class="b-magenta" />
                 <line x1="197" y1="35" x2="197" y2="5" stroke="var(--neon-magenta)" stroke-width="2.5" class="b-magenta" />
                 <circle cx="197" cy="4" r="3.5" fill="var(--neon-magenta)" />
@@ -517,12 +457,11 @@
                 <rect x="545" y="55" width="50" height="225" class="b-magenta" />
                 <rect x="695" y="85" width="60" height="195" class="b-cyan" />
                 
-                <!-- Moving Baseline Horizon -->
+                <!-- Baseline Horizon -->
                 <line x1="0" y1="279" x2="1000" y2="279" class="skyline-horizon" stroke="var(--neon-cyan)" stroke-width="4" />
             </svg>
         </div>
 
-        <!-- Responsive Title Banner -->
         <div class="title-backdrop-aura rainbow-border-box stagger-in relative z-10 select-none mb-3 md:mb-5 max-w-2xl w-full" style="animation-delay: 0.15s;">
             <h1 class="orbitron font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.9] tracking-wider uppercase">
                 <span class="cyber-title-twack block">TWACK</span>
@@ -533,7 +472,6 @@
             </div>
         </div>
 
-        <!-- Main Console Deck -->
         <div class="glass-panel rainbow-border-box p-3.5 sm:p-6 md:p-8 rounded-2xl max-w-3xl stagger-in w-full border border-cyan-500/30 box-border" style="animation-delay: 0.3s;">
             <div class="flex flex-col gap-4 sm:gap-6">
                 
@@ -603,10 +541,29 @@
                             </div>
                         </div>
 
-                        <div class="w-full flex justify-between items-center z-10 text-[9px] font-mono text-white/50 border-t border-white/10 pt-2">
-                            <span>KANSAS CITY UNDERGROUND RELAY 816</span>
-                            <span>MP3 320KBPS // 44.1KHZ</span>
+                        <div class="w-full flex flex-col gap-2 pt-2 border-t border-white/10 z-10">
+                            <!-- Integrated Spectrum Bars -->
+                            <div class="flex items-end justify-between h-8 px-2 bg-black/60 rounded-lg border border-cyan-500/20" id="spectrum-bars-container">
+                                <!-- 24 Spectrum Bars generated dynamically -->
+                            </div>
+
+                            <!-- DSP & Telemetry Controls -->
+                            <div class="flex flex-wrap justify-between items-center text-[9px] font-mono text-white/60 gap-2 px-1">
+                                <div class="flex items-center gap-1">
+                                    <span>DSP EQ:</span>
+                                    <button onclick="setEqPreset('flat')" id="eq-flat" class="px-1.5 py-0.5 rounded bg-cyan-500/30 text-cyan-300 font-bold border border-cyan-400">FLAT</button>
+                                    <button onclick="setEqPreset('bass')" id="eq-bass" class="px-1.5 py-0.5 rounded bg-black/40 hover:bg-white/10">BASS</button>
+                                    <button onclick="setEqPreset('treble')" id="eq-treble" class="px-1.5 py-0.5 rounded bg-black/40 hover:bg-white/10">TREBLE</button>
+                                    <button onclick="setEqPreset('synth')" id="eq-synth" class="px-1.5 py-0.5 rounded bg-black/40 hover:bg-white/10">SYNTH</button>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span id="telemetry-fps">FPS: 60</span>
+                                    <span>•</span>
+                                    <span>MP3 320KBPS</span>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
@@ -625,14 +582,13 @@
             </div>
         </div>
         <div class="text-[10px] text-white/40">
-            TC816 SYSTEM v3.5 // FULLY RESPONSIVE DECK
+            TC816 SYSTEM v4.0 // OPTIMIZED HYPER-DECK
         </div>
     </footer>
 
     <!-- Toast Notification Container -->
     <div id="toast-container" class="fixed bottom-4 right-4 z-50 pointer-events-none flex flex-col gap-2 max-w-[90vw]"></div>
 
-    <!-- JavaScript Controller Logic -->
     <script>
         // Global Cyber Toast Manager
         function showCyberToast(message, type = 'info') {
@@ -663,10 +619,11 @@
             }, 3000);
         }
 
-        // Global Web Audio Context & Nodes
+        // Web Audio Context & Processing Chain
         let audioCtx = null;
         let analyser = null;
-        let biquadFilter = null;
+        let biquadLow = null;
+        let biquadHigh = null;
         let audioSourceNode = null;
         let frequencyData = new Uint8Array(64);
 
@@ -676,20 +633,28 @@
                 
                 analyser = audioCtx.createAnalyser();
                 analyser.fftSize = 128;
-                analyser.smoothingTimeConstant = 0.8;
+                analyser.smoothingTimeConstant = 0.82;
                 frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
-                biquadFilter = audioCtx.createBiquadFilter();
-                biquadFilter.type = 'lowshelf';
-                biquadFilter.frequency.value = 200;
-                biquadFilter.gain.value = 0;
+                // Lowshelf Filter (Bass)
+                biquadLow = audioCtx.createBiquadFilter();
+                biquadLow.type = 'lowshelf';
+                biquadLow.frequency.value = 250;
+                biquadLow.gain.value = 0;
+
+                // Highshelf Filter (Treble)
+                biquadHigh = audioCtx.createBiquadFilter();
+                biquadHigh.type = 'highshelf';
+                biquadHigh.frequency.value = 4000;
+                biquadHigh.gain.value = 0;
 
                 const audioElem = document.getElementById('twack-audio');
                 if (audioElem && !audioSourceNode) {
                     try {
                         audioSourceNode = audioCtx.createMediaElementSource(audioElem);
-                        audioSourceNode.connect(biquadFilter);
-                        biquadFilter.connect(analyser);
+                        audioSourceNode.connect(biquadLow);
+                        biquadLow.connect(biquadHigh);
+                        biquadHigh.connect(analyser);
                         analyser.connect(audioCtx.destination);
                     } catch (err) {
                         console.warn("Media element source connection handled:", err);
@@ -701,6 +666,44 @@
                 audioCtx.resume();
             }
             return audioCtx;
+        }
+
+        // DSP EQ Presets
+        function setEqPreset(preset) {
+            getAudioContext();
+            const btnIds = ['eq-flat', 'eq-bass', 'eq-treble', 'eq-synth'];
+            btnIds.forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.className = 'px-1.5 py-0.5 rounded bg-black/40 hover:bg-white/10 text-white/60';
+                }
+            });
+
+            const activeBtn = document.getElementById(`eq-${preset}`);
+            if (activeBtn) {
+                activeBtn.className = 'px-1.5 py-0.5 rounded bg-cyan-500/30 text-cyan-300 font-bold border border-cyan-400';
+            }
+
+            if (!biquadLow || !biquadHigh) return;
+
+            if (preset === 'bass') {
+                biquadLow.gain.setValueAtTime(8, audioCtx.currentTime);
+                biquadHigh.gain.setValueAtTime(-2, audioCtx.currentTime);
+                showCyberToast("DSP EQ: CYBER BASS BOOST");
+            } else if (preset === 'treble') {
+                biquadLow.gain.setValueAtTime(-3, audioCtx.currentTime);
+                biquadHigh.gain.setValueAtTime(8, audioCtx.currentTime);
+                showCyberToast("DSP EQ: NEON TREBLE CUT");
+            } else if (preset === 'synth') {
+                biquadLow.gain.setValueAtTime(5, audioCtx.currentTime);
+                biquadHigh.gain.setValueAtTime(5, audioCtx.currentTime);
+                showCyberToast("DSP EQ: SPATIAL SYNTH PRESET");
+            } else {
+                biquadLow.gain.setValueAtTime(0, audioCtx.currentTime);
+                biquadHigh.gain.setValueAtTime(0, audioCtx.currentTime);
+                showCyberToast("DSP EQ: FLAT DIRECT");
+            }
+            playCyberSound('beep', 750);
         }
 
         function playCyberSound(type = 'beep', freq = 600, duration = 0.08) {
@@ -720,7 +723,7 @@
                 osc.start();
                 osc.stop(ctx.currentTime + duration);
             } catch (e) {
-                // Ignore autoplay restrictions
+                // Ignore autoplay policies
             }
         }
 
@@ -764,7 +767,6 @@
                 document.getElementById('now-playing-ticker').innerText = segment;
                 document.getElementById('now-playing-ticker-repeat').innerText = segment;
             } catch (err) {
-                console.warn('Metadata query fallback active:', err);
                 const backup = "TWACK CITY 816 // TRANSMITTING FROM KANSAS CITY UNDERGROUND CORE • ";
                 document.getElementById('now-playing-ticker').innerText = backup;
                 document.getElementById('now-playing-ticker-repeat').innerText = backup;
@@ -865,6 +867,32 @@
             }
         }
 
+        // Auto Stream Recovery Listeners
+        audio.addEventListener('stalled', () => {
+            if (isPlaying) showCyberToast("BUFFERING STREAM SIGNAL...", 'info');
+        });
+
+        audio.addEventListener('error', () => {
+            if (isPlaying) {
+                showCyberToast("STREAM DISCONNECTED — RETRYING...", 'error');
+                setTimeout(() => { if (isPlaying) toggleAudioPlayback(); }, 2000);
+            }
+        });
+
+        const spectrumContainer = document.getElementById('spectrum-bars-container');
+        const barCount = 24;
+        const specBars = [];
+
+        if (spectrumContainer) {
+            spectrumContainer.innerHTML = '';
+            for (let i = 0; i < barCount; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'w-1 bg-gradient-to-t from-cyan-500 via-pink-500 to-amber-400 rounded-t spec-bar h-1';
+                spectrumContainer.appendChild(bar);
+                specBars.push(bar);
+            }
+        }
+
         const vizCanvas = document.getElementById('bg-visualizer');
         const vizCtx = vizCanvas ? vizCanvas.getContext('2d') : null;
 
@@ -888,7 +916,8 @@
             "🌌 VIZ: HYPERSPACE PLASMA NEBULA",
             "🏙️ VIZ: 3D CYBER-CITY FLYTHROUGH",
             "🌊 VIZ: KINETIC RIBBON WAVEFIELD",
-            "🧊 VIZ: 4D NEON TESSERACT MATRIX"
+            "🧊 VIZ: 4D NEON TESSERACT MATRIX",
+            "⚡ VIZ: QUANTUM CYBER PULSE RING"
         ];
 
         function cycleVizMode() {
@@ -899,6 +928,7 @@
             showCyberToast(`VISUALIZER MODE: ${vizModeNames[currentVizMode].split(': ')[1]}`);
         }
 
+        // Zero-GC Pre-allocated particle & vertex buffers
         let vizPhase = 0;
         const nebulaParticles = Array.from({ length: 70 }, () => ({
             x: (Math.random() - 0.5) * 2000,
@@ -907,10 +937,40 @@
             size: Math.random() * 2.5 + 1
         }));
 
-        function renderVisualizer() {
+        // Pre-allocated 4D Hypercube Vertices
+        const vertices4D = [];
+        for (let i = 0; i < 16; i++) {
+            vertices4D.push([
+                (i & 1) ? 1 : -1,
+                (i & 2) ? 1 : -1,
+                (i & 4) ? 1 : -1,
+                (i & 8) ? 1 : -1
+            ]);
+        }
+        const projected2D = Array.from({ length: 16 }, () => ({ x: 0, y: 0, scale: 1 }));
+
+        let lastTime = performance.now();
+        let frameCount = 0;
+        let lastFpsUpdate = performance.now();
+
+        function renderVisualizer(now) {
             if (!vizCtx || !vizCanvas || vizCanvas.width === 0) {
                 requestAnimationFrame(renderVisualizer);
                 return;
+            }
+
+            // Delta Time Normalization for 60Hz/120Hz/144Hz screens
+            const dt = Math.min((now - lastTime) / 1000, 0.1);
+            lastTime = now;
+
+            // Telemetry FPS Counter
+            frameCount++;
+            if (now - lastFpsUpdate >= 500) {
+                const fps = Math.round((frameCount * 1000) / (now - lastFpsUpdate));
+                const fpsLabel = document.getElementById('telemetry-fps');
+                if (fpsLabel) fpsLabel.innerText = `FPS: ${fps}`;
+                frameCount = 0;
+                lastFpsUpdate = now;
             }
 
             const w = window.innerWidth;
@@ -919,7 +979,7 @@
             const cy = h / 2;
 
             vizCtx.clearRect(0, 0, w, h);
-            vizPhase += 0.035;
+            vizPhase += dt * 2.1; // Delta-time standardized phase step
 
             if (analyser && isPlaying) {
                 analyser.getByteFrequencyData(frequencyData);
@@ -930,6 +990,17 @@
                 let sum = 0;
                 for (let i = 0; i < frequencyData.length; i++) sum += frequencyData[i];
                 avgEnergy = sum / (frequencyData.length || 1);
+
+                // Update Spectrum Bar UI
+                for (let i = 0; i < specBars.length; i++) {
+                    const val = frequencyData[i * 2] || 0;
+                    const hPx = Math.max(2, (val / 255) * 28);
+                    specBars[i].style.height = `${hPx}px`;
+                }
+            } else {
+                for (let i = 0; i < specBars.length; i++) {
+                    specBars[i].style.height = '2px';
+                }
             }
 
             // ============================================================
@@ -974,7 +1045,7 @@
 
                 const speedMult = isPlaying ? 3.5 + (avgEnergy * 0.12) : 1.8;
                 for (let p of nebulaParticles) {
-                    p.z -= speedMult;
+                    p.z -= speedMult * dt * 60;
                     if (p.z <= 1) {
                         p.z = 1000;
                         p.x = (Math.random() - 0.5) * w * 2;
@@ -1058,10 +1129,8 @@
 
                     vizCtx.strokeStyle = `hsla(${hue}, 100%, 65%, 0.85)`;
                     vizCtx.lineWidth = 3.5 + r * 0.5;
-                    vizCtx.shadowColor = `hsla(${hue}, 100%, 65%, 0.95)`;
-                    vizCtx.shadowBlur = isPlaying ? 20 : 8;
 
-                    for (let x = 0; x <= w; x += 12) {
+                    for (let x = 0; x <= w; x += 14) {
                         const sampleIndex = Math.floor((x / w) * 32);
                         const audioBoost = isPlaying ? (frequencyData[sampleIndex] || 0) * 0.45 : 22;
                         const wave1 = Math.sin(x * 0.008 + vizPhase * 1.6 + r) * (40 + audioBoost * 0.5);
@@ -1073,7 +1142,6 @@
                     }
                     vizCtx.stroke();
                 }
-                vizCtx.shadowBlur = 0;
             }
 
             // ============================================================
@@ -1083,22 +1151,12 @@
                 const audioPulse = isPlaying ? (avgEnergy / 255) * 70 : 0;
                 const baseSize = Math.min(w, h) * 0.23 + audioPulse;
 
-                const vertices4D = [];
-                for (let i = 0; i < 16; i++) {
-                    vertices4D.push([
-                        (i & 1) ? 1 : -1,
-                        (i & 2) ? 1 : -1,
-                        (i & 4) ? 1 : -1,
-                        (i & 8) ? 1 : -1
-                    ]);
-                }
-
                 const aX = vizPhase * 0.6;
                 const aY = vizPhase * 0.8;
                 const aZ = vizPhase * 0.4;
 
-                const projected2D = vertices4D.map(v => {
-                    let [x, y, z, w4] = v;
+                for (let i = 0; i < 16; i++) {
+                    let [x, y, z, w4] = vertices4D[i];
 
                     let x1 = x * Math.cos(aX) - w4 * Math.sin(aX);
                     let w1 = x * Math.sin(aX) + w4 * Math.cos(aX);
@@ -1119,12 +1177,10 @@
                     const distance3D = 3.0;
                     const scale2D = 1 / (distance3D - z3D / baseSize);
 
-                    return {
-                        x: cx + x3D * scale2D,
-                        y: cy + y3D * scale2D,
-                        scale: scale2D
-                    };
-                });
+                    projected2D[i].x = cx + x3D * scale2D;
+                    projected2D[i].y = cy + y3D * scale2D;
+                    projected2D[i].scale = scale2D;
+                }
 
                 vizCtx.lineWidth = 2.5;
                 for (let i = 0; i < 16; i++) {
@@ -1140,8 +1196,6 @@
 
                             const color = (i < 4 && j < 4) ? '#ffb703' : ((i < 8 && j < 8) ? '#00ffff' : ((i >= 8 && j >= 8) ? '#ff007f' : '#00ff66'));
                             vizCtx.strokeStyle = color;
-                            vizCtx.shadowColor = color;
-                            vizCtx.shadowBlur = isPlaying ? 16 : 6;
 
                             vizCtx.beginPath();
                             vizCtx.moveTo(p1.x, p1.y);
@@ -1153,23 +1207,74 @@
 
                 for (let p of projected2D) {
                     vizCtx.fillStyle = '#ffffff';
-                    vizCtx.shadowColor = '#ffb703';
-                    vizCtx.shadowBlur = 14;
                     vizCtx.beginPath();
                     vizCtx.arc(p.x, p.y, Math.max(3, 5 * p.scale), 0, Math.PI * 2);
                     vizCtx.fill();
                 }
-                vizCtx.shadowBlur = 0;
             }
 
-            requestAnimationFrame(renderVisualizer);
+            // ============================================================
+            // MODE 4: ⚡ QUANTUM CYBER PULSE RING
+            // ============================================================
+            else if (currentVizMode === 4) {
+                const ringRadius = Math.min(w, h) * 0.28;
+                const points = 64;
+
+                vizCtx.lineWidth = 3;
+                vizCtx.strokeStyle = '#00ffff';
+
+                vizCtx.beginPath();
+                for (let i = 0; i <= points; i++) {
+                    const theta = (i / points) * Math.PI * 2;
+                    const sampleIndex = i % 32;
+                    const energy = isPlaying ? (frequencyData[sampleIndex] || 0) * 0.6 : 10;
+                    const r = ringRadius + Math.sin(theta * 8 + vizPhase * 4) * (15 + energy);
+
+                    const x = cx + Math.cos(theta) * r;
+                    const y = cy + Math.sin(theta) * r;
+
+                    if (i === 0) vizCtx.moveTo(x, y);
+                    else vizCtx.lineTo(x, y);
+                }
+                vizCtx.stroke();
+
+                // Inner Echo Ring
+                vizCtx.lineWidth = 2;
+                vizCtx.strokeStyle = '#ff007f';
+                vizCtx.beginPath();
+                for (let i = 0; i <= points; i++) {
+                    const theta = (i / points) * Math.PI * 2;
+                    const r = ringRadius * 0.65 + Math.cos(theta * 6 - vizPhase * 3) * 12;
+
+                    const x = cx + Math.cos(theta) * r;
+                    const y = cy + Math.sin(theta) * r;
+
+                    if (i === 0) vizCtx.moveTo(x, y);
+                    else vizCtx.lineTo(x, y);
+                }
+                vizCtx.stroke();
+            }
+
+            // Continue animation if tab is active
+            if (!document.hidden) {
+                requestAnimationFrame(renderVisualizer);
+            }
         }
+
+        // Page Visibility API Pause/Resume Handler
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                lastTime = performance.now();
+                requestAnimationFrame(renderVisualizer);
+            }
+        });
 
         let isVizRunning = false;
         function initVisualizer() {
             if (isVizRunning) return;
             isVizRunning = true;
             resizeVizCanvas();
+            lastTime = performance.now();
             requestAnimationFrame(renderVisualizer);
         }
 
