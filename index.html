@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>TWACK CITY 816 // CUM GET SUM </title>
+    <title>TWACK CITY 816 //</title>
     
     <!-- Google Fonts Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,7 +186,7 @@
             animation: marquee 20s linear infinite;
         }
 
-        /* Responsive Skyline Wrapper */
+        /* Responsive Skyline Wrapper & Animated Outlines */
         .skyline-wrapper {
             position: relative;
             width: 100%;
@@ -196,6 +196,12 @@
             perspective: 1200px;
             overflow: hidden;
             aspect-ratio: 1000 / 280;
+            animation: float-skyline 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes float-skyline {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-4px); }
         }
 
         .skyline-svg {
@@ -205,30 +211,60 @@
             transform-style: preserve-3d;
         }
 
-        /* SVG Building Themes */
+        /* Continuous Solid Glowing Outline Color Flow for City Skyline */
+        @keyframes skyline-color-flow {
+            0% {
+                stroke: var(--neon-cyan);
+                filter: drop-shadow(0 0 12px var(--neon-cyan));
+            }
+            25% {
+                stroke: var(--neon-magenta);
+                filter: drop-shadow(0 0 12px var(--neon-magenta));
+            }
+            50% {
+                stroke: var(--neon-amber);
+                filter: drop-shadow(0 0 12px var(--neon-amber));
+            }
+            75% {
+                stroke: var(--neon-green);
+                filter: drop-shadow(0 0 12px var(--neon-green));
+            }
+            100% {
+                stroke: var(--neon-cyan);
+                filter: drop-shadow(0 0 12px var(--neon-cyan));
+            }
+        }
+
+        .b-violet, .b-blue, .b-cyan, .b-magenta {
+            animation: skyline-color-flow 8s linear infinite;
+        }
+
         .b-violet {
             fill: #0c0218;
-            stroke: var(--neon-violet);
-            stroke-width: 2;
-            filter: drop-shadow(0 0 10px var(--neon-violet));
+            stroke-width: 2.5;
+            animation-delay: 0s;
         }
+
         .b-blue {
             fill: #02121e;
-            stroke: #3b82f6;
-            stroke-width: 2;
-            filter: drop-shadow(0 0 10px #3b82f6);
+            stroke-width: 2.5;
+            animation-delay: -2s;
         }
+
         .b-cyan {
             fill: #011b22;
-            stroke: var(--neon-cyan);
-            stroke-width: 2.5;
-            filter: drop-shadow(0 0 14px var(--neon-cyan));
+            stroke-width: 3;
+            animation-delay: -4s;
         }
+
         .b-magenta {
             fill: #1d001d;
-            stroke: var(--neon-magenta);
-            stroke-width: 2.5;
-            filter: drop-shadow(0 0 16px var(--neon-magenta));
+            stroke-width: 3;
+            animation-delay: -6s;
+        }
+
+        .skyline-horizon {
+            animation: skyline-color-flow 8s linear infinite -1s;
         }
 
         .glass-panel {
@@ -441,14 +477,14 @@
     <!-- Main Responsive Layout Wrapper -->
     <main class="flex-1 w-full max-w-5xl flex flex-col items-center justify-center px-3 sm:px-6 text-center py-4 md:py-6 my-auto relative z-10 box-border">
         
-        <!-- 3D Cyber Skyline Vector -->
+        <!-- 3D Cyber Skyline Vector with Animated Outlines -->
         <div class="skyline-wrapper stagger-in mb-3 sm:mb-4" id="skyline-parallax">
             <svg viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg" class="skyline-svg" preserveAspectRatio="xMidYBottom meet">
                 <!-- Distant Background Towers -->
                 <rect x="40" y="170" width="45" height="110" class="b-violet" />
                 <rect x="290" y="130" width="65" height="150" class="b-violet" />
                 <rect x="740" y="150" width="45" height="130" class="b-violet" />
-                <line x1="322" y1="130" x2="322" y2="70" stroke="var(--neon-violet)" stroke-width="2" />
+                <line x1="322" y1="130" x2="322" y2="70" stroke="var(--neon-violet)" stroke-width="2" class="b-violet" />
                 <circle cx="322" cy="68" r="4" fill="var(--neon-violet)" class="animate-ping" />
 
                 <!-- Mid-Tier Skyscrapers -->
@@ -459,13 +495,13 @@
                 <rect x="840" y="110" width="50" height="170" class="b-blue" />
 
                 <!-- Stylized Union Station Silhouette Landmark -->
-                <polygon points="460,280 480,210 520,210 540,280" fill="#040f1a" stroke="var(--neon-cyan)" stroke-width="2" />
-                <line x1="500" y1="210" x2="500" y2="120" stroke="var(--neon-magenta)" stroke-width="3" filter="drop-shadow(0 0 8px var(--neon-magenta))" />
+                <polygon points="460,280 480,210 520,210 540,280" class="b-cyan" fill="#040f1a" />
+                <line x1="500" y1="210" x2="500" y2="120" stroke="var(--neon-magenta)" stroke-width="3" class="b-magenta" />
                 <circle cx="500" cy="118" r="5" fill="var(--neon-magenta)" />
 
-                <!-- Foreground High-Rises with Neon Accents -->
+                <!-- Foreground High-Rises with Animated Moving Outlines -->
                 <rect x="175" y="35" width="45" height="245" class="b-magenta" />
-                <line x1="197" y1="35" x2="197" y2="5" stroke="var(--neon-magenta)" stroke-width="2.5" />
+                <line x1="197" y1="35" x2="197" y2="5" stroke="var(--neon-magenta)" stroke-width="2.5" class="b-magenta" />
                 <circle cx="197" cy="4" r="3.5" fill="var(--neon-magenta)" />
 
                 <rect x="375" y="15" width="55" height="265" class="b-magenta" />
@@ -481,8 +517,8 @@
                 <rect x="545" y="55" width="50" height="225" class="b-magenta" />
                 <rect x="695" y="85" width="60" height="195" class="b-cyan" />
                 
-                <!-- Baseline Horizon -->
-                <line x1="0" y1="279" x2="1000" y2="279" stroke="var(--neon-cyan)" stroke-width="3.5" filter="drop-shadow(0 0 12px var(--neon-cyan))" />
+                <!-- Moving Baseline Horizon -->
+                <line x1="0" y1="279" x2="1000" y2="279" class="skyline-horizon" stroke="var(--neon-cyan)" stroke-width="4" />
             </svg>
         </div>
 
