@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>TWACK CITY 816 // OPTIMIZED UNDERGROUND BROADCAST HUB</title>
+    <title>// TWACK CITY 816 //</title>
     
     <!-- Google Fonts Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -392,12 +392,6 @@
             background: var(--neon-cyan);
         }
 
-        /* Spectrum Bar Graph Styling */
-        .spec-bar {
-            transition: height 0.05s ease-out;
-            will-change: height;
-        }
-
         .stagger-in {
             opacity: 0;
             transform: translateY(20px);
@@ -507,7 +501,7 @@
                                 <span id="stream-status-label">AUDIO_STREAM_ONLINE</span>
                             </div>
                             <button id="viz-mode-btn" onclick="cycleVizMode()" class="text-pink-400 hover:text-cyan-300 font-bold bg-black/60 px-3 py-1.5 rounded-md border border-pink-500/40 hover:border-cyan-400 transition-all cursor-pointer flex items-center gap-1.5 shadow-[0_0_12px_rgba(255,0,127,0.3)]">
-                                <span id="viz-mode-label">🌌 VIZ: HYPERSPACE PLASMA NEBULA</span>
+                                <span id="viz-mode-label">🌌 VISUALIZER: HYPERSPACE PLASMA NEBULA</span>
                             </button>
                         </div>
 
@@ -542,20 +536,26 @@
                         </div>
 
                         <div class="w-full flex flex-col gap-2 pt-2 border-t border-white/10 z-10">
-                            <!-- Integrated Spectrum Bars -->
-                            <div class="flex items-end justify-between h-8 px-2 bg-black/60 rounded-lg border border-cyan-500/20" id="spectrum-bars-container">
-                                <!-- 24 Spectrum Bars generated dynamically -->
+                            <!-- Integrated Interactive Cyber-Deck Scope & Monitor -->
+                            <div class="relative w-full h-14 bg-black/80 rounded-xl border border-cyan-500/40 overflow-hidden group cursor-pointer shadow-[inset_0_0_20px_rgba(0,0,0,0.9),0_0_15px_rgba(0,255,255,0.15)] transition-all duration-300 hover:border-pink-500/60" 
+                                 id="deck-viz-container" 
+                                 onclick="cycleDeckVizMode()" 
+                                 title="Click to cycle Deck Scope Visualizer mode">
+                                <canvas id="deck-viz-canvas" class="w-full h-full block"></canvas>
+                                <!-- CRT Scanline Mask Effect -->
+                                <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.45)_50%)] bg-[length:100%_4px] pointer-events-none opacity-70"></div>
+                                <!-- Overlay Interactive Mode Badge -->
+                                <div class="absolute top-1.5 left-2 text-[9px] font-mono text-cyan-300/90 bg-black/80 px-2 py-0.5 rounded-md border border-cyan-500/40 flex items-center gap-1.5 group-hover:border-pink-500 group-hover:text-pink-300 transition-all shadow-[0_0_8px_rgba(0,0,0,0.8)]">
+                                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                                    <span id="deck-viz-mode-text" class="font-bold">DECK VIZ: 🎛️ PEAK-HOLD SPECTRUM</span>
+                                </div>
+                                <div class="absolute bottom-1.5 right-2 text-[8px] font-mono text-white/50 group-hover:text-white/90 transition-colors hidden sm:block bg-black/60 px-1.5 py-0.5 rounded">
+                                    [ CLICK SCREEN TO CHANGE SCOPE ]
+                                </div>
                             </div>
 
-                            <!-- DSP & Telemetry Controls -->
-                            <div class="flex flex-wrap justify-between items-center text-[9px] font-mono text-white/60 gap-2 px-1">
-                                <div class="flex items-center gap-1">
-                                    <span>DSP EQ:</span>
-                                    <button onclick="setEqPreset('flat')" id="eq-flat" class="px-1.5 py-0.5 rounded bg-cyan-500/30 text-cyan-300 font-bold border border-cyan-400">FLAT</button>
-                                    <button onclick="setEqPreset('bass')" id="eq-bass" class="px-1.5 py-0.5 rounded bg-black/40 hover:bg-white/10">BASS</button>
-                                    <button onclick="setEqPreset('treble')" id="eq-treble" class="px-1.5 py-0.5 rounded bg-black/40 hover:bg-white/10">TREBLE</button>
-                                    <button onclick="setEqPreset('synth')" id="eq-synth" class="px-1.5 py-0.5 rounded bg-black/40 hover:bg-white/10">SYNTH</button>
-                                </div>
+                            <!-- Telemetry Controls -->
+                            <div class="flex justify-end items-center text-[9px] font-mono text-white/60 gap-2 px-1">
                                 <div class="flex items-center gap-2">
                                     <span id="telemetry-fps">FPS: 60</span>
                                     <span>•</span>
@@ -578,7 +578,7 @@
                 #TWACK4LYFE
             </div>
             <div class="text-pink-500 font-bold tracking-wider text-xs sm:text-sm glow-magenta">
-                #cumgetsum
+                #CUMGETSUM
             </div>
         </div>
         <div class="text-[10px] text-white/40">
@@ -626,6 +626,7 @@
         let biquadHigh = null;
         let audioSourceNode = null;
         let frequencyData = new Uint8Array(64);
+        let timeDomainData = new Uint8Array(64);
 
         function getAudioContext() {
             if (!audioCtx) {
@@ -635,6 +636,7 @@
                 analyser.fftSize = 128;
                 analyser.smoothingTimeConstant = 0.82;
                 frequencyData = new Uint8Array(analyser.frequencyBinCount);
+                timeDomainData = new Uint8Array(analyser.frequencyBinCount);
 
                 // Lowshelf Filter (Bass)
                 biquadLow = audioCtx.createBiquadFilter();
@@ -666,44 +668,6 @@
                 audioCtx.resume();
             }
             return audioCtx;
-        }
-
-        // DSP EQ Presets
-        function setEqPreset(preset) {
-            getAudioContext();
-            const btnIds = ['eq-flat', 'eq-bass', 'eq-treble', 'eq-synth'];
-            btnIds.forEach(id => {
-                const btn = document.getElementById(id);
-                if (btn) {
-                    btn.className = 'px-1.5 py-0.5 rounded bg-black/40 hover:bg-white/10 text-white/60';
-                }
-            });
-
-            const activeBtn = document.getElementById(`eq-${preset}`);
-            if (activeBtn) {
-                activeBtn.className = 'px-1.5 py-0.5 rounded bg-cyan-500/30 text-cyan-300 font-bold border border-cyan-400';
-            }
-
-            if (!biquadLow || !biquadHigh) return;
-
-            if (preset === 'bass') {
-                biquadLow.gain.setValueAtTime(8, audioCtx.currentTime);
-                biquadHigh.gain.setValueAtTime(-2, audioCtx.currentTime);
-                showCyberToast("DSP EQ: CYBER BASS BOOST");
-            } else if (preset === 'treble') {
-                biquadLow.gain.setValueAtTime(-3, audioCtx.currentTime);
-                biquadHigh.gain.setValueAtTime(8, audioCtx.currentTime);
-                showCyberToast("DSP EQ: NEON TREBLE CUT");
-            } else if (preset === 'synth') {
-                biquadLow.gain.setValueAtTime(5, audioCtx.currentTime);
-                biquadHigh.gain.setValueAtTime(5, audioCtx.currentTime);
-                showCyberToast("DSP EQ: SPATIAL SYNTH PRESET");
-            } else {
-                biquadLow.gain.setValueAtTime(0, audioCtx.currentTime);
-                biquadHigh.gain.setValueAtTime(0, audioCtx.currentTime);
-                showCyberToast("DSP EQ: FLAT DIRECT");
-            }
-            playCyberSound('beep', 750);
         }
 
         function playCyberSound(type = 'beep', freq = 600, duration = 0.08) {
@@ -879,18 +843,37 @@
             }
         });
 
-        const spectrumContainer = document.getElementById('spectrum-bars-container');
-        const barCount = 24;
-        const specBars = [];
+        // Mini Player Deck Scope Canvas State
+        let deckVizMode = 0;
+        const deckVizModes = [
+            "🎛️ PEAK-HOLD SPECTRUM",
+            "⚡ CRT LASER OSCILLOSCOPE",
+            "📟 STEREO VU GAUGES",
+            "🧬 QUANTUM DNA PULSE"
+        ];
 
-        if (spectrumContainer) {
-            spectrumContainer.innerHTML = '';
-            for (let i = 0; i < barCount; i++) {
-                const bar = document.createElement('div');
-                bar.className = 'w-1 bg-gradient-to-t from-cyan-500 via-pink-500 to-amber-400 rounded-t spec-bar h-1';
-                spectrumContainer.appendChild(bar);
-                specBars.push(bar);
-            }
+        const deckCanvas = document.getElementById('deck-viz-canvas');
+        const deckCtx = deckCanvas ? deckCanvas.getContext('2d') : null;
+        const deckPeaks = new Float32Array(32);
+        const deckPeakHoldTime = new Float32Array(32);
+
+        function cycleDeckVizMode() {
+            deckVizMode = (deckVizMode + 1) % deckVizModes.length;
+            const textLabel = document.getElementById('deck-viz-mode-text');
+            if (textLabel) textLabel.innerText = `DECK VIZ: ${deckVizModes[deckVizMode]}`;
+            playCyberSound('beep', 950);
+            showCyberToast(`PLAYER DECK SCOPE: ${deckVizModes[deckVizMode]}`);
+        }
+
+        function resizeDeckCanvas() {
+            if (!deckCanvas || !deckCtx) return;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const rect = deckCanvas.getBoundingClientRect();
+            if (rect.width === 0 || rect.height === 0) return;
+            deckCanvas.width = rect.width * dpr;
+            deckCanvas.height = rect.height * dpr;
+            deckCtx.setTransform(1, 0, 0, 1, 0, 0);
+            deckCtx.scale(dpr, dpr);
         }
 
         const vizCanvas = document.getElementById('bg-visualizer');
@@ -907,17 +890,17 @@
             vizCanvas.style.height = h + 'px';
             vizCtx.setTransform(1, 0, 0, 1, 0, 0);
             vizCtx.scale(dpr, dpr);
+            resizeDeckCanvas();
         }
         window.addEventListener('resize', resizeVizCanvas);
-        resizeVizCanvas();
 
         let currentVizMode = 0;
         const vizModeNames = [
-            "🌌 VIZ: HYPERSPACE PLASMA NEBULA",
-            "🏙️ VIZ: 3D CYBER-CITY FLYTHROUGH",
-            "🌊 VIZ: KINETIC RIBBON WAVEFIELD",
-            "🧊 VIZ: 4D NEON TESSERACT MATRIX",
-            "⚡ VIZ: QUANTUM CYBER PULSE RING"
+            "🌌 VISUALIZER: HYPERSPACE PLASMA NEBULA",
+            "🏙️ VISUALIZER: 3D CYBER-CITY FLYTHROUGH",
+            "🌊 VISUALIZER: KINETIC RIBBON WAVEFIELD",
+            "🧊 VISUALIZER: 4D NEON TESSERACT MATRIX",
+            "⚡ VISUALIZER: QUANTUM CYBER PULSE RING"
         ];
 
         function cycleVizMode() {
@@ -953,13 +936,162 @@
         let frameCount = 0;
         let lastFpsUpdate = performance.now();
 
+        function renderDeckVisualizer(dt) {
+            if (!deckCtx || !deckCanvas) return;
+            const rect = deckCanvas.getBoundingClientRect();
+            const w = rect.width;
+            const h = rect.height;
+            if (w === 0 || h === 0) return;
+
+            deckCtx.clearRect(0, 0, w, h);
+
+            // ============================================================
+            // MODE 0: 🎛️ PEAK-HOLD SPECTRUM
+            // ============================================================
+            if (deckVizMode === 0) {
+                const barCount = 32;
+                const gap = 2;
+                const barWidth = (w - (barCount - 1) * gap) / barCount;
+
+                for (let i = 0; i < barCount; i++) {
+                    const freqVal = isPlaying ? (frequencyData[i * 2] || 0) : Math.sin(vizPhase * 3 + i * 0.25) * 25 + 30;
+                    const barHeight = Math.max(3, (freqVal / 255) * (h - 8));
+                    const x = i * (barWidth + gap);
+                    const y = h - barHeight;
+
+                    // Decay peak hold
+                    if (barHeight >= deckPeaks[i]) {
+                        deckPeaks[i] = barHeight;
+                        deckPeakHoldTime[i] = 0.25;
+                    } else {
+                        if (deckPeakHoldTime[i] > 0) {
+                            deckPeakHoldTime[i] -= dt;
+                        } else {
+                            deckPeaks[i] = Math.max(0, deckPeaks[i] - dt * 55);
+                        }
+                    }
+
+                    // Draw Gradient Spectrum Bar
+                    const grad = deckCtx.createLinearGradient(0, h, 0, 0);
+                    grad.addColorStop(0, '#00ffff');
+                    grad.addColorStop(0.5, '#ff007f');
+                    grad.addColorStop(1, '#ffb703');
+                    deckCtx.fillStyle = grad;
+                    deckCtx.fillRect(x, y, barWidth, barHeight);
+
+                    // Draw Floating Peak Hold Dot
+                    const peakY = Math.max(0, h - deckPeaks[i] - 2);
+                    deckCtx.fillStyle = '#ffffff';
+                    deckCtx.fillRect(x, peakY, barWidth, 2);
+                }
+            }
+
+            // ============================================================
+            // MODE 1: ⚡ CRT LASER OSCILLOSCOPE
+            // ============================================================
+            else if (deckVizMode === 1) {
+                // Background Raster Grid
+                deckCtx.strokeStyle = 'rgba(0, 255, 255, 0.12)';
+                deckCtx.lineWidth = 1;
+                deckCtx.beginPath();
+                for (let gx = 0; gx < w; gx += 20) {
+                    deckCtx.moveTo(gx, 0); deckCtx.lineTo(gx, h);
+                }
+                for (let gy = 0; gy < h; gy += 12) {
+                    deckCtx.moveTo(0, gy); deckCtx.lineTo(w, gy);
+                }
+                deckCtx.stroke();
+
+                // Laser Trace Line
+                deckCtx.lineWidth = 2.2;
+                deckCtx.strokeStyle = '#00ff66';
+                deckCtx.shadowColor = '#00ff66';
+                deckCtx.shadowBlur = 8;
+                deckCtx.beginPath();
+
+                const points = 64;
+                const sliceWidth = w / points;
+                let x = 0;
+                for (let i = 0; i < points; i++) {
+                    const v = isPlaying ? (timeDomainData[i] / 128.0) : (1.0 + Math.sin(i * 0.25 + vizPhase * 4) * 0.25);
+                    const y = (v * h) / 2;
+                    if (i === 0) deckCtx.moveTo(x, y);
+                    else deckCtx.lineTo(x, y);
+                    x += sliceWidth;
+                }
+                deckCtx.stroke();
+                deckCtx.shadowBlur = 0;
+            }
+
+            // ============================================================
+            // MODE 2: 📟 STEREO VU GAUGES
+            // ============================================================
+            else if (deckVizMode === 2) {
+                const midY = h / 2;
+                const leftVal = isPlaying ? (frequencyData[3] || 0) / 255 : (Math.sin(vizPhase * 2.2) * 0.35 + 0.45);
+                const rightVal = isPlaying ? (frequencyData[9] || 0) / 255 : (Math.cos(vizPhase * 2.8) * 0.35 + 0.45);
+
+                const drawVU = (yOffset, label, val) => {
+                    deckCtx.fillStyle = '#00ffff';
+                    deckCtx.font = 'bold 9px monospace';
+                    deckCtx.fillText(label, 4, yOffset + 12);
+
+                    const startX = 22;
+                    const vuW = w - 28;
+                    const segments = 26;
+                    const segW = (vuW / segments) - 1.5;
+                    const activeSegs = Math.floor(val * segments);
+
+                    for (let s = 0; s < segments; s++) {
+                        const segX = startX + s * (segW + 1.5);
+                        let col = '#00ff66';
+                        if (s > 17) col = '#ffb703';
+                        if (s > 22) col = '#ff007f';
+
+                        deckCtx.fillStyle = s < activeSegs ? col : 'rgba(255,255,255,0.08)';
+                        deckCtx.fillRect(segX, yOffset + 3, segW, 11);
+                    }
+                };
+
+                drawVU(2, 'L', leftVal);
+                drawVU(midY + 1, 'R', rightVal);
+            }
+
+            // ============================================================
+            // MODE 3: 🧬 QUANTUM DNA PULSE
+            // ============================================================
+            else if (deckVizMode === 3) {
+                const cy = h / 2;
+                deckCtx.lineWidth = 1.8;
+                deckCtx.strokeStyle = '#a855f7';
+                deckCtx.beginPath();
+                for (let x = 0; x < w; x += 5) {
+                    const idx = Math.floor((x / w) * 32);
+                    const val = isPlaying ? (frequencyData[idx] || 0) * 0.16 : Math.sin(x * 0.05 + vizPhase * 3) * 12;
+                    const y1 = cy + Math.sin(x * 0.04 + vizPhase * 2.5) * val;
+                    const y2 = cy - Math.sin(x * 0.04 + vizPhase * 2.5) * val;
+
+                    deckCtx.moveTo(x, y1); deckCtx.lineTo(x, y2);
+                }
+                deckCtx.stroke();
+
+                // Core Line
+                deckCtx.strokeStyle = '#00ffff';
+                deckCtx.lineWidth = 1;
+                deckCtx.beginPath();
+                deckCtx.moveTo(0, cy);
+                deckCtx.lineTo(w, cy);
+                deckCtx.stroke();
+            }
+        }
+
         function renderVisualizer(now) {
             if (!vizCtx || !vizCanvas || vizCanvas.width === 0) {
                 requestAnimationFrame(renderVisualizer);
                 return;
             }
 
-            // Delta Time Normalization for 60Hz/120Hz/144Hz screens
+            // Delta Time Normalization
             const dt = Math.min((now - lastTime) / 1000, 0.1);
             lastTime = now;
 
@@ -979,10 +1111,11 @@
             const cy = h / 2;
 
             vizCtx.clearRect(0, 0, w, h);
-            vizPhase += dt * 2.1; // Delta-time standardized phase step
+            vizPhase += dt * 2.1;
 
             if (analyser && isPlaying) {
                 analyser.getByteFrequencyData(frequencyData);
+                analyser.getByteTimeDomainData(timeDomainData);
             }
 
             let avgEnergy = 0;
@@ -990,18 +1123,10 @@
                 let sum = 0;
                 for (let i = 0; i < frequencyData.length; i++) sum += frequencyData[i];
                 avgEnergy = sum / (frequencyData.length || 1);
-
-                // Update Spectrum Bar UI
-                for (let i = 0; i < specBars.length; i++) {
-                    const val = frequencyData[i * 2] || 0;
-                    const hPx = Math.max(2, (val / 255) * 28);
-                    specBars[i].style.height = `${hPx}px`;
-                }
-            } else {
-                for (let i = 0; i < specBars.length; i++) {
-                    specBars[i].style.height = '2px';
-                }
             }
+
+            // Render Mini Deck Scope
+            renderDeckVisualizer(dt);
 
             // ============================================================
             // MODE 0: 🌌 HYPERSPACE PLASMA NEBULA
@@ -1261,7 +1386,7 @@
             }
         }
 
-        // Page Visibility API Pause/Resume Handler
+        // Page Visibility API Handler
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden) {
                 lastTime = performance.now();
