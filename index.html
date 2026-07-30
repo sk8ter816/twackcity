@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>// TWACK CITY 816 //</title>
+    <title>TWACK CITY 816 // OPTIMIZED UNDERGROUND BROADCAST HUB</title>
     
-    <!-- Google Fonts Integration -->
+    <!-- Google Fonts Integration with display=swap for Instant Paint -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@800;900&family=Chakra+Petch:ital,wght@0,700;1,700&family=Space+Grotesk:wght@400;600;700&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
@@ -50,8 +50,18 @@
             padding: 0;
             overflow-x: hidden;
             width: 100%;
-            min-height: 100vh;
+            min-height: 100dvh;
             -webkit-tap-highlight-color: transparent;
+            text-rendering: optimizeSpeed;
+        }
+
+        /* LOCKED BASE CENTERING TO PREVENT TOP-LEFT CORNER POP */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100dvh;
         }
 
         button, a, input {
@@ -66,33 +76,33 @@
         /* Title Backing Aura for Ultra Visibility */
         .title-backdrop-aura {
             background: rgba(3, 3, 12, 0.88) !important;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            padding: 0.75rem 1rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 0 60px rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.5rem 0.85rem;
+            border-radius: 1.25rem;
+            box-shadow: 0 0 45px rgba(0, 0, 0, 0.95);
         }
 
         @media (min-width: 640px) {
             .title-backdrop-aura {
-                padding: 1rem 1.5rem;
-                border-radius: 2rem;
+                padding: 0.85rem 1.25rem;
+                border-radius: 1.75rem;
             }
         }
 
         /* Hardware-Accelerated Rainbow Text Glow Animation */
         @keyframes rainbow-text-glow {
-            0% { filter: drop-shadow(0 0 12px #ff0055) drop-shadow(3px 3px 0px #ff0055) drop-shadow(-3px -3px 0px #00ffff); }
-            25% { filter: drop-shadow(0 0 12px #ffeb3b) drop-shadow(3px 3px 0px #ffeb3b) drop-shadow(-3px -3px 0px #a855f7); }
-            50% { filter: drop-shadow(0 0 12px #00ff66) drop-shadow(3px 3px 0px #00ff66) drop-shadow(-3px -3px 0px #ff007f); }
-            75% { filter: drop-shadow(0 0 12px #00ffff) drop-shadow(3px 3px 0px #00ffff) drop-shadow(-3px -3px 0px #ffb703); }
-            100% { filter: drop-shadow(0 0 12px #ff0055) drop-shadow(3px 3px 0px #ff0055) drop-shadow(-3px -3px 0px #00ffff); }
+            0% { filter: drop-shadow(0 0 10px #ff0055) drop-shadow(2px 2px 0px #ff0055) drop-shadow(-2px -2px 0px #00ffff); }
+            25% { filter: drop-shadow(0 0 10px #ffeb3b) drop-shadow(2px 2px 0px #ffeb3b) drop-shadow(-2px -2px 0px #a855f7); }
+            50% { filter: drop-shadow(0 0 10px #00ff66) drop-shadow(2px 2px 0px #00ff66) drop-shadow(-2px -2px 0px #ff007f); }
+            75% { filter: drop-shadow(0 0 10px #00ffff) drop-shadow(2px 2px 0px #00ffff) drop-shadow(-2px -2px 0px #ffb703); }
+            100% { filter: drop-shadow(0 0 10px #ff0055) drop-shadow(2px 2px 0px #ff0055) drop-shadow(-2px -2px 0px #00ffff); }
         }
 
         .cyber-title-twack {
             color: #ffffff;
             -webkit-text-stroke: 2px #000000;
-            text-shadow: 0 0 10px #ffffff, 3px 3px 0px #000000, -2px -2px 0px #000000;
+            text-shadow: 0 0 8px #ffffff, 2px 2px 0px #000000, -2px -2px 0px #000000;
             animation: rainbow-text-glow 3.5s linear infinite;
             will-change: filter;
         }
@@ -100,14 +110,14 @@
         @media (min-width: 640px) {
             .cyber-title-twack {
                 -webkit-text-stroke: 3px #000000;
-                text-shadow: 0 0 12px #ffffff, 4px 4px 0px #000000, -3px -3px 0px #000000;
+                text-shadow: 0 0 12px #ffffff, 3px 3px 0px #000000, -3px -3px 0px #000000;
             }
         }
 
         .cyber-title-city {
             color: #ffffff;
             -webkit-text-stroke: 2px #000000;
-            text-shadow: 0 0 10px #ffffff, 3px 3px 0px #000000, -2px -2px 0px #000000;
+            text-shadow: 0 0 8px #ffffff, 2px 2px 0px #000000, -2px -2px 0px #000000;
             animation: rainbow-text-glow 3.5s linear infinite 1.75s;
             will-change: filter;
         }
@@ -115,15 +125,15 @@
         @media (min-width: 640px) {
             .cyber-title-city {
                 -webkit-text-stroke: 3px #000000;
-                text-shadow: 0 0 12px #ffffff, 4px 4px 0px #000000, -3px -3px 0px #000000;
+                text-shadow: 0 0 12px #ffffff, 3px 3px 0px #000000, -3px -3px 0px #000000;
             }
         }
 
         .badge-816 {
             background: rgba(3, 3, 12, 0.9) !important;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
         }
 
         /* Background Grid */
@@ -132,12 +142,12 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
             background-color: var(--bg-dark);
             background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 36px 36px;
+                linear-gradient(rgba(0, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
             z-index: 0;
             pointer-events: none;
         }
@@ -148,13 +158,14 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
             z-index: 1;
             pointer-events: none;
             opacity: 0.95;
             display: block;
-            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.4));
+            filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.35));
             will-change: transform;
+            transform: translateZ(0);
         }
 
         @keyframes marquee {
@@ -165,7 +176,7 @@
         .animate-marquee {
             display: inline-block;
             white-space: nowrap;
-            animation: marquee 20s linear infinite;
+            animation: marquee 22s linear infinite;
             will-change: transform;
         }
 
@@ -173,10 +184,10 @@
         .skyline-wrapper {
             position: relative;
             width: 100%;
-            max-width: 780px;
+            max-width: 720px;
             margin: 0 auto;
             z-index: 1;
-            perspective: 1200px;
+            perspective: 1000px;
             overflow: hidden;
             aspect-ratio: 1000 / 280;
             animation: float-skyline 6s ease-in-out infinite alternate;
@@ -185,7 +196,7 @@
 
         @keyframes float-skyline {
             0% { transform: translate3d(0, 0px, 0); }
-            100% { transform: translate3d(0, -5px, 0); }
+            100% { transform: translate3d(0, -4px, 0); }
         }
 
         .skyline-svg {
@@ -197,11 +208,11 @@
 
         /* Skyline Color Cycling Animations */
         @keyframes skyline-color-flow {
-            0% { stroke: var(--neon-cyan); filter: drop-shadow(0 0 10px var(--neon-cyan)); }
-            25% { stroke: var(--neon-magenta); filter: drop-shadow(0 0 10px var(--neon-magenta)); }
-            50% { stroke: var(--neon-amber); filter: drop-shadow(0 0 10px var(--neon-amber)); }
-            75% { stroke: var(--neon-green); filter: drop-shadow(0 0 10px var(--neon-green)); }
-            100% { stroke: var(--neon-cyan); filter: drop-shadow(0 0 10px var(--neon-cyan)); }
+            0% { stroke: var(--neon-cyan); filter: drop-shadow(0 0 8px var(--neon-cyan)); }
+            25% { stroke: var(--neon-magenta); filter: drop-shadow(0 0 8px var(--neon-magenta)); }
+            50% { stroke: var(--neon-amber); filter: drop-shadow(0 0 8px var(--neon-amber)); }
+            75% { stroke: var(--neon-green); filter: drop-shadow(0 0 8px var(--neon-green)); }
+            100% { stroke: var(--neon-cyan); filter: drop-shadow(0 0 8px var(--neon-cyan)); }
         }
 
         .b-violet, .b-blue, .b-cyan, .b-magenta {
@@ -220,10 +231,10 @@
 
         .glass-panel {
             background: rgba(10, 10, 18, 0.45);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 255, 255, 0.12);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 255, 255, 0.1);
         }
 
         @property --rainbow-angle {
@@ -240,9 +251,9 @@
         .rainbow-border-box {
             position: relative;
             background: rgba(8, 8, 16, 0.35) !important;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), 0 20px 50px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.15), 0 15px 40px rgba(0, 0, 0, 0.8);
         }
 
         .rainbow-border-box::before {
@@ -250,7 +261,7 @@
             position: absolute;
             inset: 0;
             border-radius: inherit;
-            padding: 2.5px;
+            padding: 2px;
             background: conic-gradient(
                 from var(--rainbow-angle),
                 #ff0055, #ff7700, #ffeb3b, #00ff66, #00ffff, #7000ff, #ff007f, #ff0055
@@ -268,7 +279,7 @@
             position: absolute;
             inset: -2px;
             border-radius: inherit;
-            padding: 2.5px;
+            padding: 2px;
             background: conic-gradient(
                 from var(--rainbow-angle),
                 #ff0055, #ff7700, #ffeb3b, #00ff66, #00ffff, #7000ff, #ff007f, #ff0055
@@ -278,17 +289,17 @@
                     mask-composite: exclude;
             animation: rotate-rainbow 3.5s linear infinite;
             z-index: 0;
-            filter: blur(5px);
-            opacity: 0.65;
+            filter: blur(4px);
+            opacity: 0.6;
             pointer-events: none;
         }
 
         .btn-cyber-rainbow {
             position: relative;
             background: rgba(15, 15, 30, 0.35) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
         }
 
         .btn-cyber-rainbow::before {
@@ -324,13 +335,13 @@
                     mask-composite: exclude;
             animation: rotate-rainbow 3s linear infinite;
             z-index: 0;
-            filter: blur(5px);
-            opacity: 0.6;
+            filter: blur(4px);
+            opacity: 0.55;
             pointer-events: none;
         }
 
-        .glow-magenta { text-shadow: 0 0 20px var(--neon-magenta), 0 0 40px var(--neon-magenta); }
-        .glow-cyan { color: var(--neon-cyan); text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-cyan); }
+        .glow-magenta { text-shadow: 0 0 15px var(--neon-magenta), 0 0 30px var(--neon-magenta); }
+        .glow-cyan { color: var(--neon-cyan); text-shadow: 0 0 12px var(--neon-cyan), 0 0 25px var(--neon-cyan); }
 
         .btn-cyber {
             position: relative;
@@ -339,16 +350,16 @@
             color: #ffffff;
             font-weight: 700;
             letter-spacing: 0.08em;
-            transition: all 0.25s cubic-bezier(0.1, 0.8, 0.3, 1);
+            transition: all 0.2s cubic-bezier(0.1, 0.8, 0.3, 1);
             overflow: hidden;
-            box-shadow: 0 0 12px rgba(0,255,255,0.2);
+            box-shadow: 0 0 10px rgba(0,255,255,0.18);
         }
 
         .btn-cyber:hover {
             border-color: var(--neon-magenta);
             background: linear-gradient(135deg, rgba(255,0,127,0.35), rgba(0,255,255,0.35));
-            box-shadow: 0 0 25px rgba(255,0,127,0.6), inset 0 0 12px rgba(255,0,127,0.4);
-            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255,0,127,0.5), inset 0 0 10px rgba(255,0,127,0.3);
+            transform: translateY(-1px);
         }
 
         .btn-cyber:active { transform: translateY(1px); }
@@ -376,26 +387,26 @@
         }
 
         input[type=range]::-webkit-slider-thumb {
-            height: 18px;
-            width: 18px;
+            height: 16px;
+            width: 16px;
             border-radius: 50%;
             background: #ffffff;
-            box-shadow: 0 0 12px var(--neon-cyan);
+            box-shadow: 0 0 10px var(--neon-cyan);
             cursor: pointer;
             -webkit-appearance: none;
-            margin-top: -6px;
+            margin-top: -5px;
             transition: transform 0.1s ease;
         }
 
         input[type=range]::-webkit-slider-thumb:hover {
-            transform: scale(1.25);
+            transform: scale(1.2);
             background: var(--neon-cyan);
         }
 
         .stagger-in {
             opacity: 0;
-            transform: translateY(20px);
-            animation: staggerFade 0.7s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            transform: translateY(15px);
+            animation: staggerFade 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
         }
 
         @keyframes staggerFade {
@@ -403,16 +414,17 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center selection:bg-cyan-500 selection:text-black antialiased">
+<body class="min-h-[100dvh] flex flex-col justify-between items-center selection:bg-cyan-500 selection:text-black antialiased">
 
     <!-- Grid and Visualizer Backgrounds -->
     <div class="grid-bg" id="grid-bg"></div>
     <canvas id="bg-visualizer"></canvas>
 
-    <main class="flex-1 w-full max-w-5xl flex flex-col items-center justify-center px-3 sm:px-6 text-center py-4 md:py-6 my-auto relative z-10 box-border">
+    <!-- FIXED: Added explicit flex/center constraints to prevent initial top-left layout flash -->
+    <main class="flex-1 w-full max-w-4xl flex flex-col items-center justify-center px-3 sm:px-6 text-center py-2 sm:py-4 my-auto relative z-10 box-border">
         
         <!-- 3D Cyber Skyline Vector with Solid Animated Outlines -->
-        <div class="skyline-wrapper stagger-in mb-3 sm:mb-4" id="skyline-parallax">
+        <div class="skyline-wrapper stagger-in mb-2 sm:mb-3" id="skyline-parallax">
             <svg viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg" class="skyline-svg" preserveAspectRatio="xMidYBottom meet">
                 <!-- Distant Towers -->
                 <rect x="40" y="170" width="45" height="110" class="b-violet" />
@@ -456,51 +468,51 @@
             </svg>
         </div>
 
-        <div class="title-backdrop-aura rainbow-border-box stagger-in relative z-10 select-none mb-3 md:mb-5 max-w-2xl w-full" style="animation-delay: 0.15s;">
-            <h1 class="orbitron font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.9] tracking-wider uppercase">
+        <div class="title-backdrop-aura rainbow-border-box stagger-in relative z-10 select-none mb-2.5 sm:mb-4 max-w-xl w-full" style="animation-delay: 0.1s;">
+            <h1 class="orbitron font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl leading-[0.92] tracking-wider uppercase">
                 <span class="cyber-title-twack block">TWACK</span>
-                <span class="cyber-title-city block mt-1">CITY</span>
+                <span class="cyber-title-city block mt-0.5">CITY</span>
             </h1>
-            <div class="mt-2 sm:mt-3 inline-flex items-center justify-center px-4 py-1 sm:px-6 sm:py-1.5 rounded-full badge-816 rainbow-border-box">
-                <span class="chakra font-bold text-lg sm:text-2xl md:text-3xl tracking-[0.3em] text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.9)] pl-1">816</span>
+            <div class="mt-1.5 sm:mt-2.5 inline-flex items-center justify-center px-3.5 py-1 sm:px-5 sm:py-1.5 rounded-full badge-816 rainbow-border-box">
+                <span class="chakra font-bold text-base sm:text-xl md:text-2xl tracking-[0.25em] text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] pl-1">816</span>
             </div>
         </div>
 
-        <div class="glass-panel rainbow-border-box p-3.5 sm:p-6 md:p-8 rounded-2xl max-w-3xl stagger-in w-full border border-cyan-500/30 box-border" style="animation-delay: 0.3s;">
-            <div class="flex flex-col gap-4 sm:gap-6">
+        <div class="glass-panel rainbow-border-box p-3 sm:p-5 md:p-6 rounded-2xl max-w-2xl stagger-in w-full border border-cyan-500/30 box-border" style="animation-delay: 0.2s;">
+            <div class="flex flex-col gap-3 sm:gap-4">
                 
                 <!-- External Gateway Links -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-4">
-                    <a href="https://lets-get-lit.com" target="_blank" rel="noopener noreferrer" onclick="playCyberSound('beep', 600)" class="btn-cyber btn-cyber-rainbow py-3 px-4 flex items-center justify-center gap-2 rounded-xl text-xs md:text-sm font-bold tracking-wider">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                    <a href="https://lets-get-lit.com" target="_blank" rel="noopener noreferrer" onclick="playCyberSound('beep', 600)" class="btn-cyber btn-cyber-rainbow py-2.5 px-3 flex items-center justify-center gap-2 rounded-xl text-xs md:text-sm font-bold tracking-wider">
                         <span>🚀</span>
                         <span>CITY GATES ENTER HERE</span>
                     </a>
-                    <a href="https://meshcast.io/view.html?geo=usw2&id=TCVIDS" target="_blank" rel="noopener noreferrer" onclick="playCyberSound('beep', 700)" class="btn-cyber btn-cyber-rainbow py-3 px-4 flex items-center justify-center gap-2 rounded-xl text-xs md:text-sm font-bold tracking-wider">
+                    <a href="https://meshcast.io/view.html?geo=usw2&id=TCVIDS" target="_blank" rel="noopener noreferrer" onclick="playCyberSound('beep', 700)" class="btn-cyber btn-cyber-rainbow py-2.5 px-3 flex items-center justify-center gap-2 rounded-xl text-xs md:text-sm font-bold tracking-wider">
                         <span>📺</span>
                         <span>TC VIDEO PORTAL</span>
                     </a>
                 </div>
 
                 <!-- Custom Radio Stream Hub -->
-                <div class="radio-container rainbow-border-box flex flex-col rounded-xl overflow-hidden border border-cyan-500/30 shadow-[0_0_30px_rgba(0,0,0,0.7)]">
+                <div class="radio-container rainbow-border-box flex flex-col rounded-xl overflow-hidden border border-cyan-500/30 shadow-[0_0_25px_rgba(0,0,0,0.7)]">
                     
                     <!-- Live Ticker Feed -->
-                    <div class="w-full bg-black/40 backdrop-blur-md border-b border-cyan-500/20 overflow-hidden py-2 sm:py-2.5 select-none flex items-center">
-                        <div class="animate-marquee font-mono text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.2em] text-[var(--neon-cyan)] drop-shadow-[0_0_8px_var(--neon-cyan)] font-bold">
+                    <div class="w-full bg-black/40 backdrop-blur-md border-b border-cyan-500/20 overflow-hidden py-1.5 sm:py-2 select-none flex items-center">
+                        <div class="animate-marquee font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-[var(--neon-cyan)] drop-shadow-[0_0_6px_var(--neon-cyan)] font-bold">
                             <span id="now-playing-ticker">INITIALIZING TRANS-NETWORK RADIO FEED... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             <span id="now-playing-ticker-repeat">INITIALIZING TRANS-NETWORK RADIO FEED... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         </div>
                     </div>
 
                     <!-- Visualizer Controls & Deck Module -->
-                    <div class="bg-black/35 backdrop-blur-md flex flex-col justify-between items-center relative overflow-hidden px-3 sm:px-6 py-4 sm:py-5 gap-3.5">
+                    <div class="bg-black/35 backdrop-blur-md flex flex-col justify-between items-center relative overflow-hidden px-2.5 sm:px-5 py-3 sm:py-4 gap-3">
                         
-                        <div class="w-full flex flex-col sm:flex-row justify-between items-center gap-2.5 z-10 text-[10px] sm:text-xs font-mono">
-                            <div class="text-cyan-400/90 flex items-center gap-2 bg-black/60 px-3 py-1.5 rounded-md border border-cyan-500/40">
+                        <div class="w-full flex flex-col sm:flex-row justify-between items-center gap-2 z-10 text-[10px] sm:text-xs font-mono">
+                            <div class="text-cyan-400/90 flex items-center gap-2 bg-black/60 px-2.5 py-1 rounded-md border border-cyan-500/40">
                                 <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
                                 <span id="stream-status-label">AUDIO_STREAM_ONLINE</span>
                             </div>
-                            <button id="viz-mode-btn" onclick="cycleVizMode()" class="text-pink-400 hover:text-cyan-300 font-bold bg-black/60 px-3 py-1.5 rounded-md border border-pink-500/40 hover:border-cyan-400 transition-all cursor-pointer flex items-center gap-1.5 shadow-[0_0_12px_rgba(255,0,127,0.3)]">
+                            <button id="viz-mode-btn" onclick="cycleVizMode()" class="text-pink-400 hover:text-cyan-300 font-bold bg-black/60 px-2.5 py-1 rounded-md border border-pink-500/40 hover:border-cyan-400 transition-all cursor-pointer flex items-center gap-1.5 shadow-[0_0_10px_rgba(255,0,127,0.3)]">
                                 <span id="viz-mode-label">🌌 VISUALIZER: HYPERSPACE PLASMA NEBULA</span>
                             </button>
                         </div>
@@ -508,25 +520,25 @@
                         <!-- Audio Element -->
                         <audio id="twack-audio" preload="none" crossorigin="anonymous"></audio>
 
-                        <!-- Central Play Controls & DSP Toggles -->
-                        <div class="flex flex-col items-center justify-center z-10 w-full gap-3.5 my-1">
-                            <button id="custom-play-btn" onclick="toggleAudioPlayback()" aria-label="Play or Pause Stream" class="relative group w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-2 border-white/80 bg-black hover:border-[var(--neon-magenta)] hover:bg-neutral-900 active:scale-95 transition-all duration-200 shadow-[0_0_20px_rgba(0,255,255,0.2)] focus:outline-none cursor-pointer">
+                        <!-- Central Play Controls -->
+                        <div class="flex flex-col items-center justify-center z-10 w-full gap-2.5 my-0.5">
+                            <button id="custom-play-btn" onclick="toggleAudioPlayback()" aria-label="Play or Pause Stream" class="relative group w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center border-2 border-white/80 bg-black hover:border-[var(--neon-magenta)] hover:bg-neutral-900 active:scale-95 transition-all duration-200 shadow-[0_0_15px_rgba(0,255,255,0.2)] focus:outline-none cursor-pointer">
                                 <div id="orbital-ring" class="absolute inset-1 rounded-full border border-dashed border-[var(--neon-cyan)]/50 group-hover:border-[var(--neon-magenta)]/80 animate-orbital"></div>
-                                <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8 text-white group-hover:text-[var(--neon-magenta)] transition-colors ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7 text-white group-hover:text-[var(--neon-magenta)] transition-colors ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                 </svg>
-                                <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8 text-white group-hover:text-[var(--neon-magenta)] transition-colors hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7 text-white group-hover:text-[var(--neon-magenta)] transition-colors hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 9v6m4-6v6" />
                                 </svg>
                             </button>
 
                             <!-- Volume Controls -->
-                            <div class="flex items-center gap-2.5 sm:gap-3 w-44 sm:w-64 px-3.5 py-1.5 bg-black/50 rounded-full border border-white/10 shadow-[0_0_12px_rgba(0,0,0,0.6)] backdrop-blur-md">
-                                <button id="volume-mute-btn" onclick="toggleMute()" aria-label="Mute or Unmute" class="text-white hover:text-[var(--neon-cyan)] transition-colors duration-200 focus:outline-none cursor-pointer p-1">
-                                    <svg id="speaker-on-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <div class="flex items-center gap-2 sm:gap-3 w-40 sm:w-56 px-3 py-1 bg-black/50 rounded-full border border-white/10 shadow-[0_0_10px_rgba(0,0,0,0.6)] backdrop-blur-md">
+                                <button id="volume-mute-btn" onclick="toggleMute()" aria-label="Mute or Unmute" class="text-white hover:text-[var(--neon-cyan)] transition-colors duration-200 focus:outline-none cursor-pointer p-0.5">
+                                    <svg id="speaker-on-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M12 18.75V5.25L7.75 9.5H4.5v5h3.25L12 18.75z" />
                                     </svg>
-                                    <svg id="speaker-muted-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden text-[var(--neon-magenta)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg id="speaker-muted-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 hidden text-[var(--neon-magenta)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
                                     </svg>
@@ -535,9 +547,9 @@
                             </div>
                         </div>
 
-                        <div class="w-full flex flex-col gap-2 pt-2 border-t border-white/10 z-10">
+                        <div class="w-full flex flex-col gap-1.5 pt-2 border-t border-white/10 z-10">
                             <!-- Integrated Interactive Cyber-Deck Scope & Monitor -->
-                            <div class="relative w-full h-14 bg-black/80 rounded-xl border border-cyan-500/40 overflow-hidden group cursor-pointer shadow-[inset_0_0_20px_rgba(0,0,0,0.9),0_0_15px_rgba(0,255,255,0.15)] transition-all duration-300 hover:border-pink-500/60" 
+                            <div class="relative w-full h-12 sm:h-14 bg-black/80 rounded-xl border border-cyan-500/40 overflow-hidden group cursor-pointer shadow-[inset_0_0_15px_rgba(0,0,0,0.9),0_0_12px_rgba(0,255,255,0.12)] transition-all duration-300 hover:border-pink-500/60" 
                                  id="deck-viz-container" 
                                  onclick="cycleDeckVizMode()" 
                                  title="Click to cycle Deck Scope Visualizer mode">
@@ -545,11 +557,11 @@
                                 <!-- CRT Scanline Mask Effect -->
                                 <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.45)_50%)] bg-[length:100%_4px] pointer-events-none opacity-70"></div>
                                 <!-- Overlay Interactive Mode Badge -->
-                                <div class="absolute top-1.5 left-2 text-[9px] font-mono text-cyan-300/90 bg-black/80 px-2 py-0.5 rounded-md border border-cyan-500/40 flex items-center gap-1.5 group-hover:border-pink-500 group-hover:text-pink-300 transition-all shadow-[0_0_8px_rgba(0,0,0,0.8)]">
+                                <div class="absolute top-1 left-1.5 text-[8px] sm:text-[9px] font-mono text-cyan-300/90 bg-black/80 px-1.5 py-0.5 rounded border border-cyan-500/40 flex items-center gap-1 group-hover:border-pink-500 group-hover:text-pink-300 transition-all shadow-[0_0_6px_rgba(0,0,0,0.8)]">
                                     <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
                                     <span id="deck-viz-mode-text" class="font-bold">DECK VIZ: 🎛️ PEAK-HOLD SPECTRUM</span>
                                 </div>
-                                <div class="absolute bottom-1.5 right-2 text-[8px] font-mono text-white/50 group-hover:text-white/90 transition-colors hidden sm:block bg-black/60 px-1.5 py-0.5 rounded">
+                                <div class="absolute bottom-1 right-1.5 text-[8px] font-mono text-white/50 group-hover:text-white/90 transition-colors hidden sm:block bg-black/60 px-1.5 py-0.5 rounded">
                                     [ CLICK SCREEN TO CHANGE SCOPE ]
                                 </div>
                             </div>
@@ -572,7 +584,7 @@
     </main>
 
     <!-- Footer Container -->
-    <footer class="p-3 sm:p-6 w-full max-w-7xl flex flex-col sm:flex-row justify-between items-center gap-2 z-10 text-xs font-mono text-white/60 box-border">
+    <footer class="p-2 sm:p-4 w-full max-w-5xl flex flex-col sm:flex-row justify-between items-center gap-1.5 z-10 text-xs font-mono text-white/60 box-border">
         <div class="flex flex-row gap-4 text-center sm:text-left">
             <div class="text-cyan-400 font-bold tracking-wider text-xs sm:text-sm glow-cyan">
                 #TWACK4LYFE
@@ -587,7 +599,7 @@
     </footer>
 
     <!-- Toast Notification Container -->
-    <div id="toast-container" class="fixed bottom-4 right-4 z-50 pointer-events-none flex flex-col gap-2 max-w-[90vw]"></div>
+    <div id="toast-container" class="fixed bottom-3 right-3 z-50 pointer-events-none flex flex-col gap-1.5 max-w-[90vw]"></div>
 
     <script>
         // Global Cyber Toast Manager
@@ -596,7 +608,7 @@
             if (!container) return;
 
             const toast = document.createElement('div');
-            toast.className = `pointer-events-auto px-3.5 py-2 rounded-lg font-mono text-xs font-bold border backdrop-blur-md shadow-lg transition-all duration-300 transform translate-y-4 opacity-0 flex items-center gap-2`;
+            toast.className = `pointer-events-auto px-3 py-1.5 rounded-lg font-mono text-xs font-bold border backdrop-blur-md shadow-lg transition-all duration-300 transform translate-y-3 opacity-0 flex items-center gap-1.5`;
             
             if (type === 'error') {
                 toast.className += ` bg-red-950/90 text-red-200 border-red-500/60 shadow-red-500/20`;
@@ -606,17 +618,17 @@
                 toast.className += ` bg-black/90 text-cyan-300 border-cyan-500/60 shadow-cyan-500/20`;
             }
 
-            toast.innerHTML = `<span>⚡</span><span>${message}</span>`;
+            toast.innerHTML = `⚡<span>${message}</span>`;
             container.appendChild(toast);
 
             requestAnimationFrame(() => {
-                toast.classList.remove('translate-y-4', 'opacity-0');
+                toast.classList.remove('translate-y-3', 'opacity-0');
             });
 
             setTimeout(() => {
                 toast.classList.add('translate-y-2', 'opacity-0');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+                setTimeout(() => toast.remove(), 250);
+            }, 2500);
         }
 
         // Web Audio Context & Processing Chain
@@ -670,7 +682,7 @@
             return audioCtx;
         }
 
-        function playCyberSound(type = 'beep', freq = 600, duration = 0.08) {
+        function playCyberSound(type = 'beep', freq = 600, duration = 0.07) {
             try {
                 const ctx = getAudioContext();
                 const osc = ctx.createOscillator();
@@ -678,7 +690,7 @@
 
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(freq, ctx.currentTime);
-                gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                gain.gain.setValueAtTime(0.06, ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
 
                 osc.connect(gain);
@@ -687,7 +699,7 @@
                 osc.start();
                 osc.stop(ctx.currentTime + duration);
             } catch (e) {
-                // Ignore autoplay policies
+                // Audio autoplay block ignore
             }
         }
 
@@ -700,8 +712,12 @@
         }
 
         async function fetchNowPlaying() {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 4000);
+
             try {
-                const response = await fetch('https://a8.asurahosting.com/api/nowplaying/t_c_816');
+                const response = await fetch('https://a8.asurahosting.com/api/nowplaying/t_c_816', { signal: controller.signal });
+                clearTimeout(timeoutId);
                 if (!response.ok) throw new Error('API request failed');
 
                 const data = await response.json();
@@ -731,6 +747,7 @@
                 document.getElementById('now-playing-ticker').innerText = segment;
                 document.getElementById('now-playing-ticker-repeat').innerText = segment;
             } catch (err) {
+                clearTimeout(timeoutId);
                 const backup = "TWACK CITY 816 // TRANSMITTING FROM KANSAS CITY UNDERGROUND CORE • ";
                 document.getElementById('now-playing-ticker').innerText = backup;
                 document.getElementById('now-playing-ticker-repeat').innerText = backup;
@@ -738,7 +755,7 @@
         }
 
         fetchNowPlaying();
-        setInterval(fetchNowPlaying, 10000);
+        setInterval(fetchNowPlaying, 12000);
 
         const audio = document.getElementById('twack-audio');
         const playBtn = document.getElementById('custom-play-btn');
@@ -867,7 +884,8 @@
 
         function resizeDeckCanvas() {
             if (!deckCanvas || !deckCtx) return;
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            // Cap DPR at 1.5 max for performance optimization on mobile retina displays
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
             const rect = deckCanvas.getBoundingClientRect();
             if (rect.width === 0 || rect.height === 0) return;
             deckCanvas.width = rect.width * dpr;
@@ -879,9 +897,10 @@
         const vizCanvas = document.getElementById('bg-visualizer');
         const vizCtx = vizCanvas ? vizCanvas.getContext('2d') : null;
 
+        let resizeTimeout = null;
         function resizeVizCanvas() {
             if (!vizCanvas || !vizCtx) return;
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
             const w = window.innerWidth;
             const h = window.innerHeight;
             vizCanvas.width = w * dpr;
@@ -892,7 +911,11 @@
             vizCtx.scale(dpr, dpr);
             resizeDeckCanvas();
         }
-        window.addEventListener('resize', resizeVizCanvas);
+
+        window.addEventListener('resize', () => {
+            if (resizeTimeout) cancelAnimationFrame(resizeTimeout);
+            resizeTimeout = requestAnimationFrame(resizeVizCanvas);
+        });
 
         let currentVizMode = 0;
         const vizModeNames = [
@@ -913,11 +936,11 @@
 
         // Zero-GC Pre-allocated particle & vertex buffers
         let vizPhase = 0;
-        const nebulaParticles = Array.from({ length: 70 }, () => ({
+        const nebulaParticles = Array.from({ length: 60 }, () => ({
             x: (Math.random() - 0.5) * 2000,
             y: (Math.random() - 0.5) * 2000,
             z: Math.random() * 1000 + 1,
-            size: Math.random() * 2.5 + 1
+            size: Math.random() * 2.2 + 1
         }));
 
         // Pre-allocated 4D Hypercube Vertices
@@ -1006,7 +1029,7 @@
                 deckCtx.lineWidth = 2.2;
                 deckCtx.strokeStyle = '#00ff66';
                 deckCtx.shadowColor = '#00ff66';
-                deckCtx.shadowBlur = 8;
+                deckCtx.shadowBlur = 6;
                 deckCtx.beginPath();
 
                 const points = 64;
@@ -1135,7 +1158,7 @@
                 vizCtx.save();
                 vizCtx.globalCompositeOperation = 'lighter';
 
-                const blobCount = 6;
+                const blobCount = 5;
                 for (let b = 0; b < blobCount; b++) {
                     const angle = vizPhase * (0.8 + b * 0.2) + (b * Math.PI / 3);
                     const dist = (Math.sin(vizPhase * 0.5 + b) * 0.25 + 0.35) * Math.min(w, h) * 0.4;
@@ -1231,7 +1254,7 @@
                 }
 
                 vizCtx.shadowColor = '#ff007f';
-                vizCtx.shadowBlur = 25;
+                vizCtx.shadowBlur = 20;
                 vizCtx.strokeStyle = '#ffb703';
                 vizCtx.lineWidth = 4;
                 vizCtx.beginPath();
@@ -1245,7 +1268,7 @@
             // MODE 2: 🌊 KINETIC RIBBON WAVEFIELD
             // ============================================================
             else if (currentVizMode === 2) {
-                const ribbonCount = 7;
+                const ribbonCount = 6;
 
                 for (let r = 0; r < ribbonCount; r++) {
                     vizCtx.beginPath();
@@ -1253,9 +1276,9 @@
                     const hue = (r * 55 + vizPhase * 50 + 120) % 360;
 
                     vizCtx.strokeStyle = `hsla(${hue}, 100%, 65%, 0.85)`;
-                    vizCtx.lineWidth = 3.5 + r * 0.5;
+                    vizCtx.lineWidth = 3.2 + r * 0.5;
 
-                    for (let x = 0; x <= w; x += 14) {
+                    for (let x = 0; x <= w; x += 16) {
                         const sampleIndex = Math.floor((x / w) * 32);
                         const audioBoost = isPlaying ? (frequencyData[sampleIndex] || 0) * 0.45 : 22;
                         const wave1 = Math.sin(x * 0.008 + vizPhase * 1.6 + r) * (40 + audioBoost * 0.5);
@@ -1274,7 +1297,7 @@
             // ============================================================
             else if (currentVizMode === 3) {
                 const audioPulse = isPlaying ? (avgEnergy / 255) * 70 : 0;
-                const baseSize = Math.min(w, h) * 0.23 + audioPulse;
+                const baseSize = Math.min(w, h) * 0.22 + audioPulse;
 
                 const aX = vizPhase * 0.6;
                 const aY = vizPhase * 0.8;
@@ -1307,7 +1330,7 @@
                     projected2D[i].scale = scale2D;
                 }
 
-                vizCtx.lineWidth = 2.5;
+                vizCtx.lineWidth = 2.2;
                 for (let i = 0; i < 16; i++) {
                     for (let j = i + 1; j < 16; j++) {
                         let diff = 0;
@@ -1333,7 +1356,7 @@
                 for (let p of projected2D) {
                     vizCtx.fillStyle = '#ffffff';
                     vizCtx.beginPath();
-                    vizCtx.arc(p.x, p.y, Math.max(3, 5 * p.scale), 0, Math.PI * 2);
+                    vizCtx.arc(p.x, p.y, Math.max(2.5, 4.5 * p.scale), 0, Math.PI * 2);
                     vizCtx.fill();
                 }
             }
@@ -1342,10 +1365,10 @@
             // MODE 4: ⚡ QUANTUM CYBER PULSE RING
             // ============================================================
             else if (currentVizMode === 4) {
-                const ringRadius = Math.min(w, h) * 0.28;
+                const ringRadius = Math.min(w, h) * 0.26;
                 const points = 64;
 
-                vizCtx.lineWidth = 3;
+                vizCtx.lineWidth = 2.8;
                 vizCtx.strokeStyle = '#00ffff';
 
                 vizCtx.beginPath();
