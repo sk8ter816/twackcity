@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>TWACK CITY 816</title>
+    <title>TWACK CITY 816 // OPTIMIZED UNDERGROUND BROADCAST HUB</title>
     
     <!-- Google Fonts Integration with display=swap for Instant Paint -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -884,7 +884,6 @@
 
         function resizeDeckCanvas() {
             if (!deckCanvas || !deckCtx) return;
-            // Cap DPR at 1.5 max for performance optimization on mobile retina displays
             const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
             const rect = deckCanvas.getBoundingClientRect();
             if (rect.width === 0 || rect.height === 0) return;
@@ -1426,11 +1425,15 @@
             requestAnimationFrame(renderVisualizer);
         }
 
+        // FIXED: Multi-trigger initialization guarantees correct setup on first cold load without manual refresh
         if (document.readyState === 'complete' || document.readyState === 'interactive') {
             initVisualizer();
         } else {
             document.addEventListener('DOMContentLoaded', initVisualizer);
-            window.addEventListener('load', initVisualizer);
+            window.addEventListener('load', () => {
+                resizeVizCanvas();
+                initVisualizer();
+            });
         }
     </script>
 </body>
