@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>TWACK CITY 816</title>
+    <title>TWACK CITY 816 // OPTIMIZED UNDERGROUND BROADCAST HUB</title>
     
     <!-- Google Fonts Integration with display=swap for Instant Paint -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -424,26 +424,65 @@
             will-change: text-shadow, box-shadow;
         }
 
+        /* Shimmer Sweep Animation for Gateway Buttons */
+        @keyframes shimmer-sweep {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            35%, 100% { transform: translateX(250%) skewX(-20deg); }
+        }
+
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            transform: translateX(-150%) skewX(-20deg);
+            animation: shimmer-sweep 3.5s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Distinct High-Impact Gateway Styling */
+        .btn-cum-get-sum {
+            background: linear-gradient(135deg, rgba(255, 0, 127, 0.45), rgba(255, 183, 3, 0.45)) !important;
+            border: 2px solid rgba(255, 183, 3, 0.8) !important;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.5), inset 0 0 15px rgba(255, 183, 3, 0.3) !important;
+        }
+
+        .btn-cum-get-sum:hover {
+            transform: scale(1.03) translateY(-2px) !important;
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.85), 0 0 15px rgba(255, 183, 3, 0.9), inset 0 0 20px rgba(255, 255, 255, 0.5) !important;
+            border-color: #ffffff !important;
+        }
+
+        .btn-tc-video {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.45), rgba(168, 85, 247, 0.45)) !important;
+            border: 2px solid rgba(0, 255, 255, 0.8) !important;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), inset 0 0 15px rgba(168, 85, 247, 0.3) !important;
+        }
+
+        .btn-tc-video:hover {
+            transform: scale(1.03) translateY(-2px) !important;
+            box-shadow: 0 0 35px rgba(0, 255, 255, 0.85), 0 0 15px rgba(168, 85, 247, 0.9), inset 0 0 20px rgba(255, 255, 255, 0.5) !important;
+            border-color: #ffffff !important;
+        }
+
         .btn-cyber {
             position: relative;
-            background: linear-gradient(135deg, rgba(0,255,255,0.15), rgba(255,0,127,0.15));
-            border: 1px solid rgba(0,255,255,0.4);
             color: #ffffff;
             font-weight: 700;
             letter-spacing: 0.08em;
-            transition: all 0.2s cubic-bezier(0.1, 0.8, 0.3, 1);
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,255,255,0.18);
+            transition: all 0.25s cubic-bezier(0.1, 0.8, 0.3, 1);
         }
 
-        .btn-cyber:hover {
-            border-color: var(--neon-magenta);
-            background: linear-gradient(135deg, rgba(255,0,127,0.35), rgba(0,255,255,0.35));
-            box-shadow: 0 0 20px rgba(255,0,127,0.5), inset 0 0 10px rgba(255,0,127,0.3);
-            transform: translateY(-1px);
-        }
-
-        .btn-cyber:active { transform: translateY(1px); }
+        .btn-cyber:active { transform: translateY(1px) scale(0.98) !important; }
 
         @keyframes orbital {
             0% { transform: rotate(0deg); }
@@ -562,14 +601,14 @@
             <div class="flex flex-col gap-3 sm:gap-4">
                 
                 <!-- External Gateway Links -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-4">
-                    <a href="https://lets-get-lit.com" target="_blank" rel="noopener noreferrer" onclick="playCyberSound('beep', 600)" class="btn-cyber btn-cyber-rainbow animate-neon-flash py-3 sm:py-4 px-4 flex items-center justify-center gap-2.5 rounded-xl orbitron font-black text-sm sm:text-base md:text-lg lg:text-xl tracking-wider">
-                        <span class="text-lg sm:text-xl">🚀</span>
-                        <span>CUM GET SUM</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <a href="https://lets-get-lit.com" target="_blank" rel="noopener noreferrer" onclick="playCyberSound('beep', 600)" class="btn-cyber btn-cum-get-sum shimmer-btn py-3.5 sm:py-4 px-4 flex items-center justify-center gap-3 rounded-xl orbitron font-black text-base sm:text-lg md:text-xl tracking-widest text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                        <span class="text-xl sm:text-2xl animate-bounce">🚀</span>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-white to-pink-400 font-extrabold">CUM GET SUM</span>
                     </a>
-                    <a href="https://meshcast.io/view.html?geo=usw2&id=TCVIDS" target="_blank" rel="noopener noreferrer" onclick="playCyberSound('beep', 700)" class="btn-cyber btn-cyber-rainbow animate-neon-flash py-3 sm:py-4 px-4 flex items-center justify-center gap-2.5 rounded-xl orbitron font-black text-sm sm:text-base md:text-lg lg:text-xl tracking-wider">
-                        <span class="text-lg sm:text-xl">📺</span>
-                        <span>TC VIDEO PORTAL</span>
+                    <a href="https://meshcast.io/view.html?geo=usw2&id=TCVIDS" target="_blank" rel="noopener noreferrer" onclick="playCyberSound('beep', 700)" class="btn-cyber btn-tc-video shimmer-btn py-3.5 sm:py-4 px-4 flex items-center justify-center gap-3 rounded-xl orbitron font-black text-base sm:text-lg md:text-xl tracking-widest text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                        <span class="text-xl sm:text-2xl animate-pulse">📺</span>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 via-white to-purple-300 font-extrabold">TC VIDEO PORTAL</span>
                     </a>
                 </div>
 
@@ -760,30 +799,60 @@
         }
 
         async function fetchNowPlaying() {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4000);
+            let data = null;
+            const targetUrl = 'https://a8.asurahosting.com/api/nowplaying/t_c_816';
+            const allStationsUrl = 'https://a8.asurahosting.com/api/nowplaying';
 
-            try {
-                const response = await fetch('https://a8.asurahosting.com/api/nowplaying/t_c_816', { signal: controller.signal });
-                clearTimeout(timeoutId);
-                if (!response.ok) throw new Error('API request failed');
+            // Multi-tier request pipeline with CORS proxies to guarantee metadata fetching
+            const fetchEndpoints = [
+                targetUrl,
+                allStationsUrl,
+                `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`,
+                `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`,
+                `https://api.allorigins.win/raw?url=${encodeURIComponent(allStationsUrl)}`
+            ];
 
-                const data = await response.json();
+            for (const endpoint of fetchEndpoints) {
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 3500);
+                    const response = await fetch(endpoint, { signal: controller.signal });
+                    clearTimeout(timeoutId);
+
+                    if (response.ok) {
+                        const json = await response.json();
+                        if (Array.isArray(json)) {
+                            data = json.find(s => 
+                                s?.station?.shortcode === 't_c_816' || 
+                                String(s?.station?.id) === 't_c_816' || 
+                                (s?.station?.listen_url && s.station.listen_url.includes('t_c_816'))
+                            ) || json[0];
+                        } else if (json && (json.now_playing || json.station)) {
+                            data = json;
+                        }
+                        if (data) break;
+                    }
+                } catch (err) {
+                    // Failover silently to next proxy attempt
+                }
+            }
+
+            if (data) {
                 let displayString = "TRANS-SPECTRUM BROADCAST ACTIVE";
 
                 if (data?.station?.listen_url) {
                     activeStreamUrl = forceHTTPS(data.station.listen_url);
                 }
 
-                if (data?.now_playing?.song) {
-                    const song = data.now_playing.song;
+                const song = data?.now_playing?.song;
+                if (song) {
                     const artist = song.artist ? song.artist.trim().toUpperCase() : "";
                     const title = song.title ? song.title.trim().toUpperCase() : "";
 
                     if (artist && title) {
                         displayString = `NOW PLAYING: ${artist} — ${title}`;
                     } else if (song.text) {
-                        displayString = `NOW PLAYING: ${song.text.toUpperCase()}`;
+                        displayString = `NOW PLAYING: ${song.text.trim().toUpperCase()}`;
                     }
                 }
 
@@ -794,8 +863,7 @@
                 const segment = `${displayString} \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 • \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 `;
                 document.getElementById('now-playing-ticker').innerText = segment;
                 document.getElementById('now-playing-ticker-repeat').innerText = segment;
-            } catch (err) {
-                clearTimeout(timeoutId);
+            } else {
                 const backup = "TWACK CITY 816 // TRANSMITTING FROM KANSAS CITY UNDERGROUND CORE • ";
                 document.getElementById('now-playing-ticker').innerText = backup;
                 document.getElementById('now-playing-ticker-repeat').innerText = backup;
@@ -803,7 +871,7 @@
         }
 
         fetchNowPlaying();
-        setInterval(fetchNowPlaying, 12000);
+        setInterval(fetchNowPlaying, 10000);
 
         const audio = document.getElementById('twack-audio');
         const playBtn = document.getElementById('custom-play-btn');
