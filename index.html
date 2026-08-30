@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>TWACK CITY 816</title>
     
-    <!-- Google Fonts Integration with display=swap for Instant Paint -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Orbitron:wght@800;900&family=Chakra+Petch:ital,wght@0,700;1,700&family=Space+Grotesk:wght@400;600;700&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -64,7 +62,6 @@
         .orbitron { font-family: 'Orbitron', sans-serif; }
         .chakra { font-family: 'Chakra Petch', sans-serif; }
 
-        /* Title Backing Aura for Ultra Visibility */
         .title-backdrop-aura {
             background: rgba(3, 3, 12, 0.88) !important;
             backdrop-filter: blur(20px);
@@ -81,7 +78,6 @@
             }
         }
 
-        /* Hardware-Accelerated Rainbow Text Glow Animation */
         @keyframes rainbow-text-glow {
             0% { filter: drop-shadow(0 0 10px #ff0055) drop-shadow(2px 2px 0px #ff0055) drop-shadow(-2px -2px 0px #00ffff); }
             25% { filter: drop-shadow(0 0 10px #ffeb3b) drop-shadow(2px 2px 0px #ffeb3b) drop-shadow(-2px -2px 0px #a855f7); }
@@ -127,7 +123,6 @@
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
         }
 
-        /* Background Grid */
         .grid-bg {
             position: fixed;
             top: 0;
@@ -143,7 +138,6 @@
             pointer-events: none;
         }
 
-        /* Visualizer Canvas Layer */
         #bg-visualizer {
             position: fixed;
             top: 0;
@@ -171,7 +165,6 @@
             will-change: transform;
         }
 
-        /* Skyline Wrapper & Floating Motion */
         .skyline-wrapper {
             position: relative;
             width: 100%;
@@ -198,7 +191,6 @@
             transform-style: preserve-3d;
         }
 
-        /* Skyline Color Cycling Animations */
         @keyframes skyline-color-flow {
             0% { stroke: var(--neon-cyan); filter: drop-shadow(0 0 8px var(--neon-cyan)); }
             25% { stroke: var(--neon-magenta); filter: drop-shadow(0 0 8px var(--neon-magenta)); }
@@ -294,162 +286,6 @@
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
         }
 
-        .btn-cyber-rainbow::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 2px;
-            background: conic-gradient(
-                from var(--rainbow-angle),
-                #ff0055, #ff9900, #ffff00, #00ff66, #00ffff, #9900ff, #ff007f, #ff0055
-            );
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-            animation: rotate-rainbow 3s linear infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .btn-cyber-rainbow::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: inherit;
-            padding: 2px;
-            background: conic-gradient(
-                from var(--rainbow-angle),
-                #ff0055, #ff9900, #ffff00, #00ff66, #00ffff, #9900ff, #ff007f, #ff0055
-            );
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-            animation: rotate-rainbow 3s linear infinite;
-            z-index: 0;
-            filter: blur(4px);
-            opacity: 0.55;
-            pointer-events: none;
-        }
-
-        .glow-magenta { text-shadow: 0 0 15px var(--neon-magenta), 0 0 30px var(--neon-magenta); }
-        .glow-cyan { color: var(--neon-cyan); text-shadow: 0 0 12px var(--neon-cyan), 0 0 25px var(--neon-cyan); }
-
-        /* Animated Hashtag Keyframes */
-        @keyframes pulse-cyan-glow {
-            0%, 100% {
-                color: #00ffff;
-                text-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff, 0 0 45px #00ffff;
-                transform: scale(1);
-            }
-            50% {
-                color: #ffffff;
-                text-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff, 0 0 90px #00ffff;
-                transform: scale(1.08);
-            }
-        }
-
-        @keyframes pulse-magenta-glow {
-            0%, 100% {
-                color: #ff007f;
-                text-shadow: 0 0 12px #ff007f, 0 0 25px #ff007f, 0 0 45px #ff007f;
-                transform: scale(1);
-            }
-            50% {
-                color: #ffffff;
-                text-shadow: 0 0 25px #ff007f, 0 0 50px #ff007f, 0 0 90px #ff007f;
-                transform: scale(1.08);
-            }
-        }
-
-        .tag-twack4lyfe {
-            animation: pulse-cyan-glow 2.4s ease-in-out infinite;
-            will-change: transform, text-shadow;
-        }
-
-        @keyframes rainbow-text-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .rainbow-text-outlined {
-            background: linear-gradient(90deg, #ff0055, #ff7700, #ffeb3b, #00ff66, #00ffff, #7000ff, #ff0055);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 2px #000000;
-            filter: drop-shadow(0 0 16px rgba(0, 255, 255, 0.85));
-            animation: rainbow-text-gradient 4s linear infinite;
-            font-weight: 900;
-        }
-
-        @media (min-width: 640px) {
-            .rainbow-text-outlined {
-                -webkit-text-stroke: 3px #000000;
-            }
-        }
-
-        /* Neon Strobe Flash Effect for Gateway Buttons */
-        @keyframes neon-flash-text {
-            0%, 100% {
-                color: #ffffff;
-                text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 35px #00ffff;
-            }
-            25% {
-                color: #ffffff;
-                text-shadow: 0 0 14px #ff007f, 0 0 28px #ff007f, 0 0 45px #ff007f;
-            }
-            50% {
-                color: #ffffff;
-                text-shadow: 0 0 18px #ffeb3b, 0 0 32px #ffeb3b, 0 0 50px #ffeb3b;
-            }
-            75% {
-                color: #ffffff;
-                text-shadow: 0 0 14px #00ff66, 0 0 28px #00ff66, 0 0 45px #00ff66;
-            }
-        }
-
-        @keyframes neon-box-flash {
-            0%, 100% {
-                box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), inset 0 0 10px rgba(0, 255, 255, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(255, 0, 127, 0.85), inset 0 0 15px rgba(255, 0, 127, 0.5);
-            }
-        }
-
-        .animate-neon-flash {
-            animation: neon-flash-text 2s ease-in-out infinite, neon-box-flash 1.5s ease-in-out infinite;
-            will-change: text-shadow, box-shadow;
-        }
-
-        /* Shimmer Sweep Animation for Gateway Buttons */
-        @keyframes shimmer-sweep {
-            0% { transform: translateX(-150%) skewX(-20deg); }
-            35%, 100% { transform: translateX(250%) skewX(-20deg); }
-        }
-
-        .shimmer-btn {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .shimmer-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-            transform: translateX(-150%) skewX(-20deg);
-            animation: shimmer-sweep 3.5s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        /* Distinct High-Impact Gateway Styling */
         .btn-cum-get-sum {
             background: linear-gradient(135deg, rgba(255, 0, 127, 0.45), rgba(255, 183, 3, 0.45)) !important;
             border: 2px solid rgba(255, 183, 3, 0.8) !important;
@@ -536,35 +372,29 @@
 </head>
 <body class="min-h-[100dvh] flex flex-col justify-between items-center selection:bg-cyan-500 selection:text-black antialiased">
 
-    <!-- Grid and Single Unified Background Visualizer Canvas -->
     <div class="grid-bg" id="grid-bg"></div>
     <canvas id="bg-visualizer"></canvas>
 
     <main class="flex-1 w-full max-w-4xl flex flex-col items-center justify-center px-3 sm:px-6 text-center py-2 sm:py-4 my-auto relative z-10 box-border">
         
-        <!-- 3D Cyber Skyline Vector with Solid Animated Outlines -->
         <div class="skyline-wrapper stagger-in mb-2 sm:mb-3" id="skyline-parallax">
             <svg viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg" class="skyline-svg" preserveAspectRatio="xMidYBottom meet">
-                <!-- Distant Towers -->
                 <rect x="40" y="170" width="45" height="110" class="b-violet" />
                 <rect x="290" y="130" width="65" height="150" class="b-violet" />
                 <rect x="740" y="150" width="45" height="130" class="b-violet" />
                 <line x1="322" y1="130" x2="322" y2="70" stroke="var(--neon-violet)" stroke-width="2" class="b-violet" />
                 <circle cx="322" cy="68" r="4" fill="var(--neon-violet)" class="animate-ping" />
 
-                <!-- Mid Skyscrapers -->
                 <rect x="110" y="90" width="55" height="190" class="b-blue" />
                 <rect x="210" y="120" width="50" height="160" class="b-cyan" />
                 <rect x="430" y="70" width="65" height="210" class="b-blue" />
                 <rect x="610" y="100" width="55" height="180" class="b-cyan" />
                 <rect x="840" y="110" width="50" height="170" class="b-blue" />
 
-                <!-- Union Station Landmark Silhouette -->
                 <polygon points="460,280 480,210 520,210 540,280" class="b-cyan" fill="#040f1a" />
                 <line x1="500" y1="210" x2="500" y2="120" stroke="var(--neon-magenta)" stroke-width="3" class="b-magenta" />
                 <circle cx="500" cy="118" r="5" fill="var(--neon-magenta)" />
 
-                <!-- Foreground High-Rises -->
                 <rect x="175" y="35" width="45" height="245" class="b-magenta" />
                 <line x1="197" y1="35" x2="197" y2="5" stroke="var(--neon-magenta)" stroke-width="2.5" class="b-magenta" />
                 <circle cx="197" cy="4" r="3.5" fill="var(--neon-magenta)" />
@@ -582,7 +412,6 @@
                 <rect x="545" y="55" width="50" height="225" class="b-magenta" />
                 <rect x="695" y="85" width="60" height="195" class="b-cyan" />
                 
-                <!-- Baseline Horizon -->
                 <line x1="0" y1="279" x2="1000" y2="279" class="skyline-horizon" stroke="var(--neon-cyan)" stroke-width="4" />
             </svg>
         </div>
@@ -600,7 +429,7 @@
         <div class="glass-panel rainbow-border-box p-3 sm:p-5 md:p-6 rounded-2xl max-w-2xl stagger-in w-full border border-cyan-500/30 box-border" style="animation-delay: 0.2s;">
             <div class="flex flex-col gap-3 sm:gap-4">
                 
-                <!-- External Gateway Links -->
+                <!-- Gateway Link Buttons -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <a href="https://lets-get-lit.com" target="_blank" rel="noopener noreferrer" onclick="playCyberSound('beep', 600)" class="btn-cyber btn-cum-get-sum shimmer-btn py-3.5 sm:py-4 px-4 flex items-center justify-center gap-3 rounded-xl orbitron font-black text-base sm:text-lg md:text-xl tracking-widest text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                         <span class="text-xl sm:text-2xl animate-bounce">🚀</span>
@@ -623,11 +452,11 @@
                         </div>
                     </div>
 
-                    <!-- Visualizer Controls & Deck Module -->
+                    <!-- Audio Deck Module -->
                     <div class="bg-black/35 backdrop-blur-md flex flex-col justify-between items-center relative overflow-hidden px-2.5 sm:px-5 py-3 sm:py-4 gap-3">
                         
-                        <!-- Audio Element -->
-                        <audio id="twack-audio" preload="none" crossorigin="anonymous"></audio>
+                        <!-- Audio Element with Safari CORS Attributes -->
+                        <audio id="twack-audio" preload="none" crossorigin="anonymous" playsinline webkit-playsinline></audio>
 
                         <!-- Central Play Controls -->
                         <div class="flex flex-col items-center justify-center z-10 w-full gap-2.5 my-1">
@@ -658,7 +487,7 @@
 
                         <!-- Telemetry Status Bar -->
                         <div class="w-full flex justify-between items-center pt-2 border-t border-white/10 z-10 text-[10px] font-mono text-white/60 px-1">
-                            <span class="text-cyan-400/80">CORE MATRIX ONLINE</span>
+                            <span class="text-cyan-400/80">SAFARI AUDIO MATRIX SECURED</span>
                             <div class="flex items-center gap-2">
                                 <span id="telemetry-fps">FPS: 60</span>
                                 <span>•</span>
@@ -675,8 +504,13 @@
 
     <!-- Bottom Left Tag -->
     <div class="fixed bottom-3 left-3 sm:bottom-5 sm:left-6 z-20 select-none pointer-events-none">
-        <div class="rainbow-text-outlined orbitron font-black tracking-widest text-xl sm:text-3xl md:text-4xl">
-            #TWACK4LYFE
+        <div class="relative inline-block">
+            <!-- Neon Aura Glow Backdrop -->
+            <div class="absolute inset-0 blur-xl opacity-80 bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-400 animate-pulse rounded-full scale-125"></div>
+            <!-- Outlined Rainbow Text -->
+            <div class="relative rainbow-text-outlined orbitron font-black tracking-widest text-xl sm:text-3xl md:text-4xl drop-shadow-[0_0_20px_rgba(255,0,127,0.9)]">
+                #TWACK4LYFE
+            </div>
         </div>
     </div>
 
@@ -684,7 +518,6 @@
     <div id="toast-container" class="fixed bottom-3 right-3 z-50 pointer-events-none flex flex-col gap-1.5 max-w-[90vw]"></div>
 
     <script>
-        // Global Cyber Toast Manager
         function showCyberToast(message, type = 'info') {
             const container = document.getElementById('toast-container');
             if (!container) return;
@@ -713,7 +546,6 @@
             }, 2500);
         }
 
-        // Web Audio Context & Processing Chain
         let audioCtx = null;
         let analyser = null;
         let biquadLow = null;
@@ -725,45 +557,45 @@
         function getAudioContext() {
             if (!audioCtx) {
                 try {
-                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                    
-                    analyser = audioCtx.createAnalyser();
-                    analyser.fftSize = 128;
-                    analyser.smoothingTimeConstant = 0.82;
-                    frequencyData = new Uint8Array(analyser.frequencyBinCount);
-                    timeDomainData = new Uint8Array(analyser.frequencyBinCount);
+                    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContextClass) {
+                        audioCtx = new AudioContextClass();
+                        analyser = audioCtx.createAnalyser();
+                        analyser.fftSize = 128;
+                        analyser.smoothingTimeConstant = 0.82;
+                        frequencyData = new Uint8Array(analyser.frequencyBinCount);
+                        timeDomainData = new Uint8Array(analyser.frequencyBinCount);
 
-                    // Lowshelf Filter (Bass)
-                    biquadLow = audioCtx.createBiquadFilter();
-                    biquadLow.type = 'lowshelf';
-                    biquadLow.frequency.value = 250;
-                    biquadLow.gain.value = 0;
+                        biquadLow = audioCtx.createBiquadFilter();
+                        biquadLow.type = 'lowshelf';
+                        biquadLow.frequency.value = 250;
+                        biquadLow.gain.value = 0;
 
-                    // Highshelf Filter (Treble)
-                    biquadHigh = audioCtx.createBiquadFilter();
-                    biquadHigh.type = 'highshelf';
-                    biquadHigh.frequency.value = 4000;
-                    biquadHigh.gain.value = 0;
+                        biquadHigh = audioCtx.createBiquadFilter();
+                        biquadHigh.type = 'highshelf';
+                        biquadHigh.frequency.value = 4000;
+                        biquadHigh.gain.value = 0;
 
-                    const audioElem = document.getElementById('twack-audio');
-                    if (audioElem && !audioSourceNode) {
-                        try {
-                            audioSourceNode = audioCtx.createMediaElementSource(audioElem);
-                            audioSourceNode.connect(biquadLow);
-                            biquadLow.connect(biquadHigh);
-                            biquadHigh.connect(analyser);
-                            analyser.connect(audioCtx.destination);
-                        } catch (err) {
-                            console.warn("Media element source connection handled:", err);
+                        const audioElem = document.getElementById('twack-audio');
+                        if (audioElem && !audioSourceNode) {
+                            try {
+                                audioSourceNode = audioCtx.createMediaElementSource(audioElem);
+                                audioSourceNode.connect(biquadLow);
+                                biquadLow.connect(biquadHigh);
+                                biquadHigh.connect(analyser);
+                                analyser.connect(audioCtx.destination);
+                            } catch (err) {
+                                console.warn("Web Audio graph connection skipped due to Safari CORS policy:", err);
+                            }
                         }
                     }
                 } catch (e) {
-                    console.warn("Web Audio API not initialized yet:", e);
+                    console.warn("Web Audio API not supported or restricted:", e);
                 }
             }
 
             if (audioCtx && audioCtx.state === 'suspended') {
-                audioCtx.resume();
+                audioCtx.resume().catch(() => {});
             }
             return audioCtx;
         }
@@ -786,7 +618,7 @@
                 osc.start();
                 osc.stop(ctx.currentTime + duration);
             } catch (e) {
-                // Audio autoplay block ignore
+                // Ignore autoplay gesture restrictions
             }
         }
 
@@ -803,7 +635,6 @@
             const targetUrl = 'https://a8.asurahosting.com/api/nowplaying/t_c_816';
             const allStationsUrl = 'https://a8.asurahosting.com/api/nowplaying';
 
-            // Multi-tier request pipeline with CORS proxies to guarantee metadata fetching
             const fetchEndpoints = [
                 targetUrl,
                 allStationsUrl,
@@ -833,7 +664,7 @@
                         if (data) break;
                     }
                 } catch (err) {
-                    // Failover silently to next proxy attempt
+                    // Silently failover to next endpoint
                 }
             }
 
@@ -925,6 +756,7 @@
             orbitalRing.classList.add('animate-orbital');
         }
 
+        // Synchronous Safari Audio Activation Trigger
         function toggleAudioPlayback() {
             getAudioContext();
             playCyberSound('beep', isPlaying ? 400 : 800);
@@ -934,7 +766,9 @@
                 orbitalRing.classList.add('animate-spin');
 
                 const streamEndpoint = activeStreamUrl || fallbackStreamUrl;
-                const freshUrl = streamEndpoint + (streamEndpoint.includes('?') ? '&' : '?') + 'cb=' + Date.now();
+                // Force HTTPS and add cache-buster timestamp for Safari stream re-connection
+                const secureUrl = forceHTTPS(streamEndpoint);
+                const freshUrl = secureUrl + (secureUrl.includes('?') ? '&' : '?') + 'cb=' + Date.now();
                 
                 audio.src = freshUrl;
                 audio.volume = volumeSlider.value / 100;
@@ -948,9 +782,9 @@
                         pauseIcon.classList.remove('hidden');
                         showCyberToast("STREAM CONNECTED // TRANSMISSION ACTIVE", 'success');
                     }).catch(err => {
-                        console.error("Playback prevented by browser policy:", err);
+                        console.warn("Safari Autoplay Policy intercepted direct play():", err);
                         handlePlaybackStop();
-                        showCyberToast("TAP PLAY AGAIN TO START AUDIO", 'error');
+                        showCyberToast("TAP PLAY AGAIN TO UNLOCK SAFARI AUDIO", 'error');
                     });
                 }
             } else {
@@ -962,7 +796,6 @@
             }
         }
 
-        // Auto Stream Recovery Listeners
         audio.addEventListener('stalled', () => {
             if (isPlaying) showCyberToast("BUFFERING STREAM SIGNAL...", 'info');
         });
@@ -992,7 +825,6 @@
             vizCtx.scale(dpr, dpr);
         }
 
-        // ResizeObserver for zero-latency layout updates
         if (typeof ResizeObserver !== 'undefined') {
             const resizeObserver = new ResizeObserver(() => {
                 requestAnimationFrame(resizeVizCanvas);
@@ -1005,8 +837,6 @@
         });
 
         let vizPhase = 0;
-
-        // Pre-allocated Star particles for Cyber Sky
         const skyStars = Array.from({ length: 45 }, () => ({
             x: Math.random(),
             y: Math.random() * 0.45,
@@ -1031,11 +861,9 @@
                 resizeVizCanvas();
             }
 
-            // Delta Time Normalization
             const dt = Math.min((now - lastTime) / 1000, 0.1);
             lastTime = now;
 
-            // Telemetry FPS Counter
             frameCount++;
             if (now - lastFpsUpdate >= 500) {
                 const fps = Math.round((frameCount * 1000) / (now - lastFpsUpdate));
@@ -1052,7 +880,6 @@
 
             const horizonY = h * 0.46;
 
-            // 1. Cyber Sky Stars
             vizCtx.save();
             for (let star of skyStars) {
                 const sx = star.x * w;
@@ -1065,7 +892,6 @@
             }
             vizCtx.restore();
 
-            // 2. Synthwave Ground Perspective Grid
             vizCtx.save();
             vizCtx.strokeStyle = 'rgba(0, 255, 255, 0.22)';
             vizCtx.lineWidth = 1;
@@ -1097,7 +923,6 @@
             }
             vizCtx.restore();
 
-            // 3. 3D Cyber-City Flythrough Buildings
             const buildingSlots = 10;
             for (let i = 0; i < buildingSlots; i++) {
                 const side = i % 2 === 0 ? -1 : 1;
@@ -1118,14 +943,12 @@
 
                 const drawX = side === -1 ? bx - bw : bx;
 
-                // Building Structure
                 vizCtx.fillStyle = fillPalette;
                 vizCtx.strokeStyle = colorPalette;
                 vizCtx.lineWidth = Math.max(1.5, scale * 1.15);
                 vizCtx.fillRect(drawX, by, bw, bh);
                 vizCtx.strokeRect(drawX, by, bw, bh);
 
-                // Illuminated Window Grids
                 if (bw > 12) {
                     vizCtx.fillStyle = colorPalette;
                     const winCols = 2;
@@ -1143,7 +966,6 @@
                     }
                 }
 
-                // Roof Antenna Spire & Beacon
                 vizCtx.beginPath();
                 vizCtx.moveTo(drawX + bw / 2, by);
                 vizCtx.lineTo(drawX + bw / 2, by - 35 * scale);
@@ -1155,7 +977,6 @@
                 vizCtx.fill();
             }
 
-            // 4. Synthwave Horizon Line
             vizCtx.save();
             vizCtx.shadowColor = '#ff007f';
             vizCtx.shadowBlur = 18;
@@ -1167,13 +988,11 @@
             vizCtx.stroke();
             vizCtx.restore();
 
-            // Continue rendering loop
             if (!document.hidden) {
                 requestAnimationFrame(renderVisualizer);
             }
         }
 
-        // Page Visibility API Handler
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden) {
                 lastTime = performance.now();
@@ -1190,7 +1009,6 @@
             requestAnimationFrame(renderVisualizer);
         }
 
-        // Boot Visualizer Loop instantly
         if (document.readyState === 'complete' || document.readyState === 'interactive') {
             initVisualizer();
         } else {
